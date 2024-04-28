@@ -16,7 +16,10 @@ Use App\Http\Controllers\Garcon\GarconformulaireController;
 Use App\Http\Controllers\Pointrelai\PointrelaiController;
 Use App\Http\Controllers\Pointrelai\PointrelaiformulaireController;
 Use App\Http\Controllers\Admin\AdminController;
+Use App\Http\Controllers\ColiController;
 
+
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,6 +42,20 @@ Route::view('home','home');
 
 
 
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
+Route::get('/profile/client',[CommandeController::class,'profile_index']);
+Route::get('/profile/domicile',[DomicileController::class,'profile_domicile']);
+Route::get('/profile/livreur',[FormulaireController::class,'profile_index']);
+Route::get('/profile/pointrelai',[PointrelaiformulaireController::class,'profile_index']);
+Route::get('/profile/garcon',[GarconformulaireController::class,'profile_index']);
+/*
 Route::get('/login',[ClientController::class,'form_login'])->name('login');
 Route::get('/register',[ClientController::class,'form_register'])->name('register');
 
@@ -46,7 +63,7 @@ Route::post('/register/traitement',[ClientController::class,'traitement_register
 
 Route::post('/login/traitement',[ClientController::class,'traitement_login']);
 
-
+*/
 Route::get('/commande',[CommandeController::class,'form_espace'])->name('commande');
 
 Route::post('/commande/traitement',[CommandeController::class,'traitement_espace']);
@@ -153,3 +170,11 @@ Route::post('permissions',[PermissionController::class,'store']);
 
 
 });
+
+
+
+
+
+Route::get('/colis',[ColiController::class,'showCreateForm'])->name('colis');
+
+Route::post('/colis/traitement',[ColiController::class,'store']);

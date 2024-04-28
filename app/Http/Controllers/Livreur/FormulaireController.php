@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Livreur;
 use App\Http\Controllers\Controller;
 Use App\Models\Livreur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class FormulaireController extends Controller
@@ -15,6 +16,13 @@ class FormulaireController extends Controller
         $livreurs = Livreur::all();
         return view('admin.livreur.index', compact('livreurs'));
     }
+
+    public function   profile_index()
+    {
+        $user = Auth::user();
+        return view('profile.livreur',['user' => $user]);
+    }
+
 
 
     public function index(Request $request){
@@ -60,20 +68,20 @@ class FormulaireController extends Controller
     }
 
     public function destroy($id) {
-       
+
         $livreur = Livreur::find($id);
-        
-    
+
+
         if (!$livreur) {
             echo "L'élément avec l'ID spécifié n'existe pas.";
-            
+
         } else {
-          
+
             if ($livreur->delete()) {
                 return redirect()->back();
             } else {
                 echo "Une erreur s'est produite lors de la suppression.";
-                
+
             }
         }
     }
@@ -87,18 +95,18 @@ class FormulaireController extends Controller
             'typedetransport' => 'required',
             'matricule' => 'required',
         ]);
-    
+
         // Récupérer l'ID du livreur à partir de la requête
         $id = $request->id_livreur;
-        
+
         // Trouver le livreur avec cet ID
         $livreur = Livreur::find($id);
-    
+
         // Vérifier si le livreur existe
         if(!$livreur) {
             return redirect()->back()->with('error', 'Livreur introuvable.');
         }
-    
+
         // Mettre à jour les attributs du livreur
         $livreur->nom = $request->input('nom');
         $livreur->prenom = $request->input('prenom');
@@ -106,7 +114,7 @@ class FormulaireController extends Controller
         $livreur->trajectoire = $request->input('trajectoire');
         $livreur->typedetransport = $request->input('typedetransport');
         $livreur->matricule = $request->input('matricule');
-    
+
         // Sauvegarder les modifications
         if($livreur->save()) {
             return redirect()->back()->with('status', 'Votre formulaire a été enregistré avec succès.');
@@ -114,7 +122,7 @@ class FormulaireController extends Controller
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la sauvegarde du formulaire.');
         }
     }
-    
 
-   
+
+
 }

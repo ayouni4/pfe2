@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pointrelai;
 use App\Http\Controllers\Controller;
 Use App\Models\Pointrelai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 class PointrelaiformulaireController extends Controller
 {
@@ -12,6 +13,12 @@ class PointrelaiformulaireController extends Controller
     {
         $pointrelais = Pointrelai::all();
         return view('admin.pointrelai.index', compact('pointrelais'));
+    }
+
+    public function profile_index()
+    {
+        $user = Auth::user();
+        return view('profile.pointrelai', ['user' => $user]);
     }
 
 
@@ -52,7 +59,7 @@ class PointrelaiformulaireController extends Controller
         $pointrelai->journnée = $request->input('journnée');
         $pointrelai->typeprelais = $request->input('typeprelais');
 
-       
+
         if( $pointrelai->save()){
             return redirect()->back()->with('status', 'Votre formulaire a été enregistré avec succès.');
           }else{
@@ -62,21 +69,21 @@ class PointrelaiformulaireController extends Controller
     }
 
     public function destroy($id) {
-       
+
         $pointrelai = Pointrelai::find($id);
-        
-        
-    
+
+
+
         if (!$pointrelai) {
             echo "L'élément avec l'ID spécifié n'existe pas.";
-            
+
         } else {
-          
+
             if ($pointrelai->delete()) {
                 return redirect()->back();
             } else {
                 echo "Une erreur s'est produite lors de la suppression.";
-                
+
             }
         }
     }
@@ -98,16 +105,16 @@ class PointrelaiformulaireController extends Controller
         ]);
 
         $id = $request->id_pointrelai;
-        
+
         $pointrelai = Pointrelai::find($id);
-        
-    
-   
+
+
+
         if(! $pointrelai) {
             return redirect()->back()->with('error', ' pointrelai introuvable.');
         }
-    
-       
+
+
         $pointrelai->nom = $request->input('nom');
         $pointrelai->responsable = $request->input('responsable');
         $pointrelai->numero = $request->input('numero');
@@ -117,7 +124,7 @@ class PointrelaiformulaireController extends Controller
         $pointrelai->Hfermeture = $request->input('Hfermeture');
         $pointrelai->journnée = $request->input('journnée');
         $pointrelai->typeprelais = $request->input('typeprelais');
-    
+
         // Sauvegarder les modifications
         if($pointrelai->save()) {
             return redirect()->back()->with('status', 'Votre formulaire a été enregistré avec succès.');

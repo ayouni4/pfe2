@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>livreur</title>
+    <title>colis</title>
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/img/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/img/favicons/favicon-16x16.png">
@@ -39,32 +39,44 @@
               </div>
               <div class="position-relative mt-4">
                 <hr class="bg-200">
-                <div class="divider-content-center">Livreur</div>
+                <div class="divider-content-center">colis</div>
               </div>
-              <form method="post" action="/formulaire/traitement">
+              <form method="post" action="/colis/traitement">
 			      @csrf
                  <div class="row g-3 mb-3">
-                  <div class="col-md-6"><label class="form-label">Nom</label><input class="form-control form-icon-input" type="text" name="nom" placeholder="Nom" required></div>
-                  <div class="col-md-6"><label class="form-label" >prenom</label><input class="form-control form-icon-input" type="text" name="prenom" placeholder="Prénom" required></div>
-				  <div class="col-md-6"><label class="form-label">Numero</label><input class="form-control form-icon-input" type="text" name="numero" placeholder="numero" required></div>
-				  <div class="col-md-6"><label class="form-label">Trajectoire</label><input class="form-control form-icon-input" type="text" name="trajectoire" placeholder="trajectoire" required></div>
-                  <div class="col-md-6"><label class="form-label" >Matricule</label><input class="form-control form-icon-input" type="text" name="matricule" placeholder="matricule" required></div>
+                  <div class="col-md-6"><label class="form-label">code</label><input class="form-control form-icon-input" type="text" name="code" placeholder="code" required></div>
+                  <div class="col-md-6"><label class="form-label" >Hauteur</label><input class="form-control form-icon-input" type="text" name="hauteur" placeholder="hauteur" required></div>
+				  <div class="col-md-6"><label class="form-label">Largeur</label><input class="form-control form-icon-input" type="text" name="largeur" placeholder="largeur" required></div>
+				  <div class="col-md-6"><label class="form-label">Poids</label><input class="form-control form-icon-input" type="text" name="poids" placeholder="poids" required></div>
+                  <div class="col-md-6"><label class="form-label" >adresse_debut</label><input class="form-control form-icon-input" type="text" name="adresse_debut" placeholder="adresse_debut" required></div>
+                  <div class="col-md-6"><label class="form-label" >  adresse_Fin</label><input class="form-control form-icon-input" type="text" name="  adresse_fin" placeholder="  adresse_fin" required></div>
+
+
 
 				  <div class="col-md-6">
-					  <label class="form-label" >typetransport</label>
-					  <select class="form-select" aria-label="Default select example" type="text" name="typedetransport" placeholder="typedetransport" required>
+					  <label class="form-label" >Type-colis</label>
+					  <select class="form-select" aria-label="Default select example" type="text" name="type_colis" placeholder="Type-colis" required>
 
-                    	 <option value="voiture">voiture</option>
- 						 <option value="camion">camion</option>
+                    	 <option value="voiture">incassable</option>
+ 						 <option value="camion">cassable</option>
 
 					  </select>
                     </div>
+                    <div class="col-md-6">
+					  <label class="form-label" >Type-matier</label>
+					  <select class="form-select" aria-label="Default select example" type="text" name="type_matier" placeholder="Type-matier" required>
+
+                    	 <option value="Fragile">Fragile</option>
+ 						 <option value="Résistance">Résistance</option>
+
+					  </select>
+                    </div>
+
                   <button class="btn btn-primary w-100 mb-3">valider</button>
 				  <p >{{session('status')}}</p>
                </form>
             </div>
           </div>
-
         </div>
       </div>
     </main>

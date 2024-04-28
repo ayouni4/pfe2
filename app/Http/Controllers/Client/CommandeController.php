@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 Use App\Models\Commande;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class CommandeController extends Controller
@@ -12,6 +13,11 @@ class CommandeController extends Controller
     public function client_index(Request $request){
         $clients = Commande::all();
         return view('admin.client.index', compact('clients'));
+
+    }
+    public function profile_index(Request $request){
+        $user = Auth::user();
+        return view('profile.client.prelais',['user' => $user]);
 
     }
 

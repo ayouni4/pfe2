@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -31,17 +32,18 @@
         <div class="container">
           <div class="row flex-center min-vh-100 py-5">
             <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
-                
+
               </a>
               <div class="text-center mb-7">
                 <h3>formulaire</h3>
-              
+
               </div>
               <div class="position-relative mt-4">
                 <hr class="bg-200">
                 <div class="divider-content-center">client</div>
               </div>
-              <form method="post" action="/commande/traitement">
+
+        <form method="post" action="/commande/traitement">
 			      @csrf
                  <div class="row g-3 mb-3">
                   <div class="col-md-6"><label class="form-label">Nom</label><input class="form-control form-icon-input" type="text" name="nom" placeholder="Nom" required></div>
@@ -55,10 +57,10 @@
 				  <div class="col-md-6">
 					<label class="form-label" >pointrelais</label>
 					<select class="form-select" aria-label="Default select example" type="text" name="pointrelais" placeholder="pointrelais" required>
- 
+
                     	<option value="	1">1</option>
  						 <option value="2">2</option>
- 					 	
+
 					</select>
                     </div>
                   <button class="btn btn-primary w-100 mb-3">valider</button>
@@ -74,3 +76,4 @@
   </body>
 
 </html>
+

@@ -3,66 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function register()
+    public function showRegistrationForm()
     {
-        return view('auth/register');
+        return view('auth.register');
     }
 
-    public function registerSave(Request $request)
+    public function register(Request $request)
     {
-        Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed'
-        ])->validate();
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
 
-    User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-        'type' => "0"
-    ]);
+        $user = \App\Models\User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+        ]);
 
-    return redirect()->route('login');
-}
-public function login()
-    {
-        return view('auth/login');
+        Auth::login($user);
+
+        return redirect()->route('profile');
     }
-    public function loginAction(Request $request)
+
+    public function showLoginForm()
     {
-        Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ])->validate();
-        if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed')
-            ]);
+        return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('profile');
         }
-        $request->session()->regenerate();
 
-        return redirect('/home');
+        return back()->withErrors(['email' => 'Invalid credentials']);
+    }
 
-
-
-}
-
-
-public function logout(Request $request)
+    public function logout()
     {
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        return redirect('/login');
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

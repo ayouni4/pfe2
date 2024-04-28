@@ -44,7 +44,7 @@
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">livreur</span></div>
                   </a></li>
 
-                  <li class="nav-item"><a class="nav-link active" href="/admin/livreur">
+                  <li class="nav-item"><a class="nav-link active" href="/admin/pointrelai">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">point de relais</span></div>
                   </a></li>
                   <li class="nav-item"><a class="nav-link active" href="/admin/garcon">
