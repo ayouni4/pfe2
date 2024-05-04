@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -29,19 +31,20 @@
     <main class="main" id="top">
       <div class="container-fluid px-0">
         <div class="container">
+        @include('partials.navbar')
           <div class="row flex-center min-vh-100 py-5">
             <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
                 <div class="d-flex align-items-center"><img src="/assets/img5.png" alt="phoenix" width="58"></div>
               </a>
               <div class="text-center mb-7">
-                <h3>Sign In</h3>
+                <h3>Sign In </h3>
                 <p class="text-700">Get access to your account</p>
               </div>
               <div class="position-relative mt-4">
                 <hr class="bg-200">
                 <div class="divider-content-center">or use email</div>
               </div>
-              <form action="{{ route('login') }}" method="post">
+              <form action="/admin" method="post">
         @csrf
         <label for="email">Email:</label>
         <input type="email" id="email" name="email"   class="form-control" required><br><br>
@@ -52,9 +55,11 @@
         <div class="text-center"><a class="fs--1 fw-bold" href="/register">Create an account</a></div>
     </form>
           </div>
+          @include('partials.footer')
         </div>
       </div>
     </main>
+    @endsection
     <script src="../../../assets/js/phoenix.js"></script>
   </body>
 

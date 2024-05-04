@@ -17,23 +17,33 @@ Use App\Http\Controllers\Pointrelai\PointrelaiController;
 Use App\Http\Controllers\Pointrelai\PointrelaiformulaireController;
 Use App\Http\Controllers\Admin\AdminController;
 Use App\Http\Controllers\ColiController;
-
-
+use App\Http\Controllers\Commande\CommandeeController;
+use App\Http\Controllers\Commande\PoinrelaiController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\TaxController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::controller(AuthController::class)->group(function () {
-    Route::get('registeer', 'register')->name('registeer');
-
-    Route::post('registeer', 'registerSave')->name('registeer');
-    Route::get('admin', 'login')->name('admin');
-    Route::post('admin', 'loginAction')->name('admin');
 
 
 
-    Route::get('logout', 'logout')->middleware('auth')->name('logout');});
+Route::group(['prefix' => 'auth'], function () {
+    // Routes liées à l'inscription
+    Route::get('registeer', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('registeer', [AuthController::class, 'register'])->name('registeer.save');
+
+    // Routes liées à la connexion admin
+    Route::get('admin', [AuthController::class, 'showLoginForm'])->name('admin');
+    Route::post('admin', [AuthController::class, 'login'])->name('admin.login');
+
+    // Route de déconnexion
+    Route::get('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+});
+
+
 
 Route::get('/home',[HomeController::class, 'index'])->name('home');
 Route::delete('/logout',[AuthController::class, 'logout'])->name('logout');
@@ -42,11 +52,15 @@ Route::view('home','home');
 
 
 
-Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::get('/auth/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/auth/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+
+
 
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
@@ -55,7 +69,30 @@ Route::get('/profile/domicile',[DomicileController::class,'profile_domicile']);
 Route::get('/profile/livreur',[FormulaireController::class,'profile_index']);
 Route::get('/profile/pointrelai',[PointrelaiformulaireController::class,'profile_index']);
 Route::get('/profile/garcon',[GarconformulaireController::class,'profile_index']);
+
+
+
+Route::get('/register', [UserController::class, 'form_register'])->name('register');
+Route::post('/register/traitement', [UserController::class, 'traitement_register']);
+Route::get('/login', [UserController::class, 'form_login'])->name('login');
+Route::post('/login/traitement', [UserController::class, 'traitement_login']);
+Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+
 Route::get('/login',[ClientController::class,'form_login'])->name('login');
 Route::get('/register',[ClientController::class,'form_register'])->name('register');
 
@@ -64,13 +101,27 @@ Route::post('/register/traitement',[ClientController::class,'traitement_register
 Route::post('/login/traitement',[ClientController::class,'traitement_login']);
 
 */
+
+Route::get('/commande/domicile', [CommandeeController::class, 'showDomicileForm'])->name('commande.domicile');
+Route::post('/commande/domicile', [CommandeeController::class, 'storeDomicile'])->name('commande.store.domicile');
+Route::get('/commande/colis', [CommandeeController::class, 'showColisForm'])->name('commande.colis');
+Route::post('/commande/colis', [CommandeeController::class, 'storeColis'])->name('commande.store.colis');
+
+
+Route::get('/commande/pointrelais', [PoinrelaiController::class, 'showPointRelaisForm'])->name('commande.pointrelais');
+Route::post('/commande/pointrelais', [PoinrelaiController::class, 'storePointRelais'])->name('commande.store.pointrelais');
+Route::get('/commande/coli', [PoinrelaiController::class, 'showColisForm'])->name('commande.colis');
+Route::post('/commande/coli', [PoinrelaiController::class, 'storeColis'])->name('commande.store.colis');
+
+
+
+
 Route::get('/commande',[CommandeController::class,'form_espace'])->name('commande');
 
 Route::post('/commande/traitement',[CommandeController::class,'traitement_espace']);
 
 Route::get('/domicile', [DomicileController::class, 'form_domicile'])->name('domicile');
 Route::post('/domicile/traitement',[DomicileController::class,'traitement_domicile']);
-
 
 
 Route::get('/livreur/login',[LivreurController::class,'form_login'])->name('livreur/login');
@@ -112,7 +163,7 @@ Route::get('/pointrelai/formulaire',[PointrelaiformulaireController::class,'form
 Route::post('/pointrelai/formulaire/traitement',[PointrelaiformulaireController::class,'traitement_pointrelai']);
 
 //dashbord
-Route::get('/admin/dashbord',[AdminController::class,'form_admin'])->name('/admin/dashbord');
+Route::get('/admin/dashbord',[AdminController::class,'form_admin'])->name('/admin/dashbord')->middleware('auth');
 
 Route::get('/admin/livreur',[FormulaireController::class,'livreur_index']);
 Route::get('/admin/livreur/{id}/delete',[FormulaireController::class,'destroy']);
@@ -178,3 +229,41 @@ Route::post('permissions',[PermissionController::class,'store']);
 Route::get('/colis',[ColiController::class,'showCreateForm'])->name('colis');
 
 Route::post('/colis/traitement',[ColiController::class,'store']);
+
+
+
+
+
+// Route pour afficher le formulaire d'ajout d'une devise
+Route::get('/currencies/create', [CurrencyController::class, 'create'])->name('currencies.create');
+
+// Route pour enregistrer une nouvelle devise
+Route::post('/currencies', [CurrencyController::class, 'store'])->name('currencies.store');
+
+// Route pour afficher la liste des devises
+Route::get('/currencies', [CurrencyController::class, 'index'])->name('currencies.index');
+
+// Route pour supprimer une devise
+Route::delete('/currencies/{currency}', [CurrencyController::class, 'destroy'])->name('currencies.destroy');
+
+
+
+
+
+// Route for displaying the tax management page
+Route::get('taxes', [TaxController::class, 'index'])->name('taxes.index');
+
+// Route for displaying the form to create a new tax
+Route::get('taxes/create', [TaxController::class, 'create'])->name('taxes.create');
+
+// Route for storing a new tax record
+Route::post('taxes', [TaxController::class, 'store'])->name('taxes.store');
+
+// Route for displaying the form to edit a tax record
+Route::get('taxes/{id}/edit', [TaxController::class, 'edit'])->name('taxes.edit');
+
+// Route for updating a tax record
+Route::put('taxes/{id}', [TaxController::class, 'update'])->name('taxes.update');
+
+// Route for deleting a tax record
+Route::delete('taxes/{id}', [TaxController::class, 'destroy'])->name('taxes.destroy');

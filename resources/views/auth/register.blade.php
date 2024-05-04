@@ -1,4 +1,5 @@
-
+@extends('layouts.app')
+@section('content')
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -21,15 +22,19 @@
     <link href=" {{asset('dashassets/css/user.min.css')}} " rel="stylesheet" id="user-style-default">
 	<style>
       body {
+
         opacity: 0;
+
       }
     </style>
   </head>
 
   <body>
+
     <main class="main" id="top">
       <div class="container-fluid px-0">
         <div class="container">
+        @include('partials.navbar')
           <div class="row flex-center min-vh-100 py-5">
             <div class="col-sm-10 col-md-8 col-lg-5 col-xl-5 col-xxl-3"><a class="d-flex flex-center text-decoration-none mb-4" href="../../../index.html">
                 <div class="d-flex align-items-center"><img src="/assets/img5.png" alt="phoenix" width="58"></div>
@@ -42,7 +47,7 @@
                 <hr class="bg-200">
                 <div class="divider-content-center">or use email</div>
               </div>
-              <form action="{{ route('register') }}" method="post">
+              <form action="/registeer" method="post">
         @csrf
         <label for="name">Name:</label>
         <input type="text" id="name" name="name"  class="form-control" required><br><br>
@@ -58,11 +63,16 @@
 
             </div>
           </div>
+          @include('partials.footer')
         </div>
       </div>
     </main>
+    @endsection
     <script src=" {{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="  {{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>
+
   </body>
 
 </html>
+
+

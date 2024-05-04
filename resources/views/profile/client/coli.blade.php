@@ -74,16 +74,16 @@
 
               <li class="nav-item dropdown"><a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="avatar avatar-l status-online  me-4">
-                <div class="avatar-name rounded-circle"><span> {{ strtoupper(substr($user->email, 0, 1)) }}</span></div>
+                <div class="avatar-name rounded-circle"><span> </span></div>
              </div>                </a>
                 <div class="dropdown-menu dropdown-menu-end py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
                   <div class="card bg-white position-relative border-0">
                     <div class="card-body p-0 overflow-auto scrollbar" style="height: 18rem;">
                       <div class="text-center pt-4 pb-3">
                       <div class="avatar avatar-l status-online  me-4">
-                <div class="avatar-name rounded-circle"><span> {{ strtoupper(substr($user->email, 0, 1)) }}</span></div>
+                <div class="avatar-name rounded-circle"><span> </span></div>
              </div>
-             <p> {{ $user->email }}</p>
+
                       </div>
                       <ul class="nav d-flex flex-column mb-2 pb-1">
                         <li class="nav-item"><a class="nav-link px-3" href="{{ url('/profile') }}"><span class="me-2 text-900" data-feather="user"></span>Profile</a></li>
@@ -95,7 +95,7 @@
                         <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!">
                         <form action="{{ route('logout') }}" method="post">
                         @csrf
-                            <button  type="submit"> <span class="me-2" data-feather="log-out"></span>Sign out</button>
+                            <button type="submit"> <span class="me-2" data-feather="log-out"></span>Sign out</button>
                              </form>
                            </a></div>
                   </div>
@@ -108,40 +108,50 @@
         <div class="content">
         <div class="position-relative mt-4">
                 <hr class="bg-200">
-                <div class="divider-content-center">Commande a domicile</div>
+                <div class="divider-content-center">Colis</div>
               </div>
           <div class="pb-5">
 
             <div class="row g-5">
               <div>
                 <br/>
-                <form method="post" action="{{ route('commande.store.domicile') }}">
+                //<form method="post" action="{{ route('commande.store.colis') }}">
     @csrf
+    <!-- Affichez les détails du domicile pour référence -->
+    <p> {{ $commande->nom }} {{ $commande->prenom }}</p>
 
-                 <div class="row g-3 mb-3">
-                  <div class="col-md-6"><label class="form-label">Nom</label><input class="form-control form-icon-input" type="text" name="nom" placeholder="Nom" required></div>
-                  <div class="col-md-6"><label class="form-label" >prenom</label><input class="form-control form-icon-input" type="text" name="prenom" placeholder="Prénom" required></div>
-				  <div class="col-md-6"><label class="form-label">pointdepart</label><input class="form-control form-icon-input" type="text" name="pointdepart" placeholder="Point de départ" required></div>
 
-				  <div class="col-md-6"><label class="form-label">Numero</label><input class="form-control form-icon-input" type="text" name="numero" placeholder="numero" required></div>
-
-                  <div class="col-md-6"><label class="form-label" >pointfinal</label><input class="form-control form-icon-input" type="text" name="pointfinal" placeholder="pointfinal" required></div>
-                  <div class="col-md-6"><label class="form-label" >ville</label><input class="form-control form-icon-input" type="text" name="ville" placeholder="ville" required></div>
-                  <div class="col-md-6"><label class="form-label" >codepostal</label><input class="form-control form-icon-input" type="text" name="codepostal" placeholder="codepostal" required></div>
-                  <div class="col-md-6"><label class="form-label" >city</label><input class="form-control form-icon-input" type="text" name="city" placeholder="city" required></div>
-                  <div class="col-md-6"><label class="form-label" >gouvernement</label><input class="form-control form-icon-input" type="text" name="gouvernement" placeholder="gouvernement" required></div>
+    <div class="row g-3 mb-3">
+                  <label class="form-label">code</label><input class="form-control form-icon-input" type="text" name="code" placeholder="code" required>
+                 <label class="form-label" >Hauteur</label><input class="form-control form-icon-input" type="text" name="hauteur" placeholder="hauteur" required>
+				  <label class="form-label">Largeur</label><input class="form-control form-icon-input" type="text" name="largeur" placeholder="largeur" required>
+				  <label class="form-label">Poids</label><input class="form-control form-icon-input" type="text" name="poids" placeholder="poids" required>
+                  <label class="form-label" >adresse_debut</label><input class="form-control form-icon-input" type="text" name="adresse_debut" placeholder="adresse_debut" required>
+                <label class="form-label" >  adresse_Fin</label><input class="form-control form-icon-input" type="text" name="  adresse_fin" placeholder="  adresse_fin" required>
 
 
 
 
-                  <button class="btn btn-primary w-100 mb-3" type="submit">Étape suivante : Colis</button>
-               </form>
+					  <label class="form-label" >Type-colis</label>
+					  <select class="form-select" aria-label="Default select example" type="text" name="type_colis" placeholder="Type-colis" required>
 
+                    	 <option value="incassable">incassable</option>
+ 						 <option value="cassable">cassable</option>
 
+					  </select>
 
+					  <label class="form-label" >Type-matier</label>
+					  <select class="form-select" aria-label="Default select example" type="text" name="type_matier" placeholder="Type-matier" required>
 
+                    	 <option value="Fragile">Fragile</option>
+ 						 <option value="Résistance">Résistance</option>
 
+					  </select>
 
+    <button class="btn btn-primary w-100 mb-3" type="submit">Finaliser la commande</button>
+</form>
+
+            </div>
 
 
 

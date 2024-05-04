@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Http\Middleware;
 
+use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
@@ -14,9 +17,20 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+            // Vérifie si l'utilisateur tente d'accéder à '/profile'
+            if ($request->is('profile')) {
+                return route('login'); // Redirige vers la page de connexion pour '/profile'
+            }
+
+            // Vérifie si l'utilisateur tente d'accéder à '/admin/dashboard'
+            if ($request->is('admin/dashboard')) {
+                return route('admin'); // Redirige vers la page de connexion pour '/admin/dashboard'
+            }
+
+            // Par défaut, redirige vers la route 'login' pour les autres cas
             return route('login');
         }
 
-        return null; // or return an appropriate response for JSON requests
+        return null; // ou retourne une réponse appropriée pour les requêtes JSON
     }
 }

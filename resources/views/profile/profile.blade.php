@@ -52,6 +52,10 @@
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">garcon</span></div>
                   </a></li>
 
+                  <li class="nav-item"><a class="nav-link active" href="/profile/garcon">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">garcon</span></div>
+                  </a></li>
+
 
 
               </ul>
@@ -174,7 +178,7 @@
 
               </form>
                 <hr/>
-                <!--ajouter admin-->
+
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog">
                  <div class="modal-content">

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -26,6 +27,7 @@
   </head>
 
   <body>
+
     <main class="main" id="top">
       <div class="container-fluid px-0">
         <nav class="navbar navbar-light navbar-vertical navbar-vibrant navbar-expand-lg">
@@ -33,32 +35,16 @@
             <div class="navbar-vertical-content scrollbar">
               <ul class="navbar-nav flex-column" id="navbarVerticalNav">
                 <li class="nav-item"><a class="nav-link active" href="/admin/client">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">commande P.relais</span></div>
-
-                  </a></li>
-
-                  <li class="nav-item"><a class="nav-link active" href="/admin/domicile">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">commande a domicile</span></div>
-
-                  </a></li>
+                <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">commande P.relais</span></div>
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">commande a domicile</span></div>                  </a></li>
                   <li class="nav-item"><a class="nav-link active" href="/admin/livreur">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">livreur</span></div>
                   </a></li>
-
                   <li class="nav-item"><a class="nav-link active" href="/admin/pointrelai">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">point de relais</span></div>
                   </a></li>
                   <li class="nav-item"><a class="nav-link active" href="/admin/garcon">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">garcon</span></div>
-                  </a></li>
-                  <li class="nav-item"><a class="nav-link active" href="/permissions">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">permission</span></div>
-                  </a></li>
-                  <li class="nav-item"><a class="nav-link active" href="/roles">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">role</span></div>
-                  </a></li>
-                  <li class="nav-item"><a class="nav-link active" href="/users">
-                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">user</span></div>
                   </a></li>
                   <li class="nav-item"><a class="nav-link active" href="/currencies">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">currencies</span></div>
@@ -68,8 +54,10 @@
                   </a></li>
 
 
+
               </ul>
             </div>
+            <div class="navbar-vertical-footer"><a class="btn btn-link border-0 fw-semi-bold d-flex ps-0" href="#!"><span class="navbar-vertical-footer-icon" data-feather="log-out"></span><span>Settings</span></a></div>
           </div>
         </nav>
         <nav class="navbar navbar-light navbar-top navbar-expand">
@@ -90,8 +78,7 @@
             <ul class="navbar-nav navbar-nav-icons ms-auto flex-row">
               <li class="nav-item dropdown"><a class="nav-link" id="navbarDropdownNotification" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-700" data-feather="bell" style="height:20px;width:20px;"></span></a></li>
               <li class="nav-item dropdown"><a class="nav-link notification-indicator notification-indicator-primary" id="navbarDropdownSettings" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-700" data-feather="settings" style="height:20px;width:20px;"></span></a></li>
-              <li class="nav-item dropdown"><a class="nav-link" id="navbarDropdownNindeDots" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <li class="nav-item dropdown"><a class="nav-link" id="navbarDropdownNindeDots" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="2" cy="2" r="2" fill="#6C6E71"></circle>
                     <circle cx="2" cy="8" r="2" fill="#6C6E71"></circle>
                     <circle cx="2" cy="14" r="2" fill="#6C6E71"></circle>
@@ -153,31 +140,28 @@
                   </div>
                 </div>
               </li>
-            <li class="nav-item dropdown"><a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <div class="avatar avatar-l status-online  me-4">
+              <li class="nav-item dropdown"><a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar avatar-l status-online  me-4">
                 <div class="avatar-name rounded-circle"><span>A</span></div>
-             </div>
-                </a>
-               <div class="dropdown-menu dropdown-menu-end py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
+             </div>                </a>
+                <div class="dropdown-menu dropdown-menu-end py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
                   <div class="card bg-white position-relative border-0">
                     <div class="card-body p-0 overflow-auto scrollbar" style="height: 18rem;">
                       <div class="text-center pt-4 pb-3">
                       <div class="avatar avatar-l status-online  me-4">
-                             <div class="avatar-name rounded-circle"><span>A</span></div>
-                      </div>
-                        <h6 class="mt-2">admin</h6>
+                <div class="avatar-name rounded-circle"><span>A</span></div>
+             </div>                        <h6 class="mt-2">admin</h6>
                       </div>
                       <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput" placeholder="Update your status"></div>
                       <ul class="nav d-flex flex-column mb-2 pb-1">
                         <li class="nav-item"><a class="nav-link px-3" href="{{ url('/home') }}"><span class="me-2 text-900" data-feather="user"></span>Profile</a></li>
                         <li class="nav-item"><a class="nav-link px-3" href="{{ url('/admin/dashbord') }}"><span class="me-2 text-900" data-feather="pie-chart"></span>Dashboard</a></li>
+
                       </ul>
                     </div>
                     <div class="card-footer p-0 border-top">
                       <ul class="nav d-flex flex-column my-3">
-                        <li class="nav-item">
-                          <a  data-bs-toggle="modal" data-bs-target="#exampleModal"class="nav-link px-3" href="#!"><span class="me-2 text-900" data-feather="user-plus"></span>Add another account</a>
-                        </li>
+                        <li class="nav-item"><a  class="nav-link px-3" href="{{ url('/registeer') }}"><span class="me-2 text-900" data-feather="user-plus"></span>Add another account</a></li>
                       </ul>
                       <hr>
                       <div class="px-3"><a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!"><span class="me-2" data-feather="log-out"></span>Sign out</a></div>
@@ -192,61 +176,53 @@
         <div class="content">
           <div class="pb-5">
             <div class="row g-5">
-              <div>
-                admin
-                <hr/>
-                <!--ajouter admin-->
-                <a  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary mt-3">Ajouter admin</a>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-               <div class="modal-dialog">
-                 <div class="modal-content">
-                   <div class="modal-header">
-                       <h5 class="modal-title" id="exampleModalLabel">Ajouter admin</h5><button class="btn p-1" type="button" data-bs-dismiss="modal" aria-label="Close"><span class="fas fa-times fs--1"></span></button>
-                     </div>
-                         <form action="/registeer" method="post">
-                           @csrf
-                          <div class="modal-body">
 
-                              <div class="mb-3">
-                                  <label for="name" class="form-label">Name</label>
-                                   <input type="text" name="name" class="form-control" id="name" placeholder="name" required>
-                              </div>
-                              <div class="mb-3">
-                               <label for="email" class="form-label">Email address</label>
-                               <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required>
-                            </div>
-                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control" id="password" required>
-                        </div>
+            <h4 class="py-3 mb-4">
+    <span class="text-muted fw-light">Taxes /</span> Add New Tax
+</h4>
 
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-primary" type="submit">Okay</button>
-        <p class="alert alert-danger">{{session('status')}}</p>
+<div class="container">
+    <form action="{{ route('taxes.store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
         </div>
-    </div>
+        <div class="mb-3">
+            <label for="rate" class="form-label">Rate</label>
+            <input type="number" class="form-control" id="rate" name="rate" required>
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Type</label>
+            <select class="form-select" id="type" name="type">
+                <option value="percentage">Percentage</option>
+                <option value="fixed">Fixed Value</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-      </div>
 </div>
-              </div>
-
 
 
 
             </div>
           </div>
           <footer class="footer">
-
+            <div class="row g-0 justify-content-between align-items-center h-100 mb-3">
+              <div class="col-12 col-sm-auto text-center">
+                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span><span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a></p>
+              </div>
+              <div class="col-12 col-sm-auto text-center">
+                <p class="mb-0 text-600">v1.1.0</p>
+              </div>
+            </div>
           </footer>
         </div>
       </div>
     </main>
+
+
+
     <script src=" {{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="  {{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>
   </body>

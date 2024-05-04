@@ -95,7 +95,7 @@
                         <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!">
                         <form action="{{ route('logout') }}" method="post">
                         @csrf
-                            <button  type="submit"> <span class="me-2" data-feather="log-out"></span>Sign out</button>
+                            <button type="submit"> <span class="me-2" data-feather="log-out"></span>Sign out</button>
                              </form>
                            </a></div>
                   </div>
@@ -134,19 +134,23 @@
 
 
 
-                  <button class="btn btn-primary w-100 mb-3" type="submit">Étape suivante : Colis</button>
+                  <button type="submit">Étape suivante : Colis</button>
                </form>
 
 
 
 
+               <div class="position-relative mt-4">
+                <hr class="bg-200">
+                <div class="divider-content-center">colis</div>
+              </div>
 
 
 
 
 
 
-
+            </div>
 
 <div class="mt-3">
 

@@ -38,7 +38,7 @@ class ColiController extends Controller
         $coli->type_matier = $request->input('type_matier');
 
         if ($coli->save()) {
-            return redirect()->back()->with('status', 'Votre commande a été enregistrée avec succès.');
+            return redirect()->back()->with('status', 'Votre coli a été enregistrée avec succès.');
         } else {
             return redirect()->back()->with('status', 'Erreur lors de l\'enregistrement de la commande.');
         }

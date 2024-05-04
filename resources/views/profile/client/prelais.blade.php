@@ -116,7 +116,7 @@
             <div class="row g-5">
               <div>
                 <br/>
-                <form method="post" action="/commande/traitement">
+                <form method="post" action="{{ route('commande.store.pointrelais') }}">
 			      @csrf
                  <div class="row g-3 mb-3">
                   <div class="col-md-6"><label class="form-label">Nom</label><input class="form-control form-icon-input" type="text" name="nom" placeholder="Nom" required></div>
@@ -136,9 +136,12 @@
 
 					</select>
                     </div>
-                  <button class="btn btn-primary w-100 mb-3">valider</button>
-				  <p >{{session('status')}}</p>
+                    <button class="btn btn-primary w-100 mb-3" type="submit">Étape suivante : Colis</button>
                </form>
+
+
+
+
 <div class="mt-3">
 
 

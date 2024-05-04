@@ -22,6 +22,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
+
        // 'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
 
        // 'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
