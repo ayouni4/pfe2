@@ -30,33 +30,34 @@ class CommandeController extends Controller
 
     }
 //ajouter les commandes dans BD
-    public function traitement_espace(Request $request)
-    {
-        $request->validate([
-            'nom' => 'required',
-            'prenom' => 'required',
-            'pointdepart' => 'required',
-            'pointrelais' => 'required',
-            'numero' => 'required|numeric|digits:8',
-        ]);
+public function traitement_espace(Request $request)
+{
+    $request->validate([
+        'nom' => 'required|string',
+        'prenom' => 'required|string',
+        'pointdepart' => 'required|string',
+        'pointrelais' => 'required|exists:pointrelais,id',
+        'numero' => 'required|numeric|digits:8',
+    ]);
 
-        $commande = new Commande();
+    $commande = new Commande();
 
-        $commande->nom = $request->input('nom');
-        $commande->prenom = $request->input('prenom');
-        $commande->pointdepart = $request->input('pointdepart');
-        $commande->pointrelais = $request->input('pointrelais');
-        $commande->numero = $request->input('numero');
+    $commande->nom = $request->input('nom');
+    $commande->prenom = $request->input('prenom');
+    $commande->pointdepart = $request->input('pointdepart');
+    $commande->pointrelais = $request->input('pointrelais');
+    $commande->numero = $request->input('numero');
 
-      if( $commande->save()){
-        return redirect()->back()->with('status', 'Votre commande a été enregistré avec succès.');
-      }else{
-      echo "error";
-      }
+    // Débogage pour vérifier les données de la commande
+    dd($commande);
 
-
-
+    if ($commande->save()) {
+        return redirect()->back()->with('status', 'Votre commande a été enregistrée avec succès.');
+    } else {
+        return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'enregistrement de la commande.');
     }
+}
+
     public function destroy($id) {
 
         $Commande = Commande::find($id);

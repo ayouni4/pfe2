@@ -127,33 +127,18 @@
 
                   <div class="col-md-6"><label class="form-label" >Matricule</label><input class="form-control form-icon-input" type="text" name="matricule" placeholder="matricule" required></div>
 
-				  <div class="col-md-6">
-					<label class="form-label" >pointrelais</label>
-					<select class="form-select" aria-label="Default select example" type="text" name="pointrelais" placeholder="pointrelais" required>
-
-                    	<option value="	1">1</option>
- 						 <option value="2">2</option>
-
-					</select>
-                    </div>
-                    <button class="btn btn-primary w-100 mb-3" type="submit">Étape suivante : Colis</button>
-               </form>
-
-
-
-
-<div class="mt-3">
-
-
+                  <div class="col-md-6">
+    <label class="form-label">Point Relais</label>
+    <select class="form-select" id="pointrelaisSelect" name="pointrelais" required>
+        <option value="">Sélectionner un point relais</option>
+        <!-- Les options seront chargées dynamiquement via JavaScript -->
+    </select>
 </div>
 
 
-
-
+                    <button class="btn btn-primary w-100 mb-3" type="submit">Étape suivante : Colis</button>
+               </form>
               </div>
-
-
-
 
             </div>
           </div>
@@ -161,6 +146,46 @@
         </div>
       </div>
     </main>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const pointrelaisSelect = document.getElementById('pointrelaisSelect');
+
+    function loadPointRelaisAddresses() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/api/pointrelais', true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    pointrelaisSelect.innerHTML = ''; // Efface toutes les options actuelles
+                    data.forEach(pointrelais => {
+                        const option = document.createElement('option');
+                        option.value = pointrelais.id;
+                        option.textContent = pointrelais.nom + ' - ' + pointrelais.adresse;
+                        pointrelaisSelect.appendChild(option);
+                    });
+                } else {
+                    console.error('Erreur lors du chargement des points relais :', xhr.statusText);
+                }
+            }
+        };
+        xhr.send();
+    }
+
+    // Événement de changement sur le menu déroulant des points relais
+    pointrelaisSelect.addEventListener('change', function() {
+        const selectedPointRelaisId = pointrelaisSelect.value;
+        console.log('Point Relais sélectionné :', selectedPointRelaisId);
+        // Autres actions à effectuer lorsque la sélection change
+    });
+
+    // Chargement initial des points relais lors du chargement de la page
+    loadPointRelaisAddresses();
+});
+
+</script>
+
 
 
 

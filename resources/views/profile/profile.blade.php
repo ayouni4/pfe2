@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -26,8 +27,11 @@
   </head>
 
   <body>
+
     <main class="main" id="top">
+
       <div class="container-fluid px-0">
+
         <nav class="navbar navbar-light navbar-vertical navbar-vibrant navbar-expand-lg">
           <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
             <div class="navbar-vertical-content scrollbar">
@@ -195,9 +199,7 @@
 
             </div>
           </div>
-          <footer class="footer">
 
-          </footer>
         </div>
       </div>
     </main>

@@ -23,10 +23,21 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\TaxController;
+use App\Http\Controllers\OrdrelivraisonController;
+use App\Models\Pointrelai;
+
+// Définir une route pour récupérer les adresses des pointrelais
+Route::get('/api/pointrelais', function() {
+    $pointrelais = Pointrelai::all();
+
+    return response()->json($pointrelais);
+});
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 
 
@@ -53,9 +64,9 @@ Route::view('home','home');
 
 
 Route::get('/auth/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/auth/register', [AuthController::class, 'register']);
 Route::get('/auth/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
@@ -267,3 +278,10 @@ Route::put('taxes/{id}', [TaxController::class, 'update'])->name('taxes.update')
 
 // Route for deleting a tax record
 Route::delete('taxes/{id}', [TaxController::class, 'destroy'])->name('taxes.destroy');
+
+
+
+
+
+Route::get('/ordrelivraison', [OrdrelivraisonController::class, 'showColisData'])->name('ordrelivraison');
+

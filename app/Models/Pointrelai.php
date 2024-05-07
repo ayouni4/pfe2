@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pointrelai extends Model
 {
+
+
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class, 'pointrelais');
+    }
+
+
+
     use HasFactory;
     protected $fillable = [
         'nom',
@@ -18,7 +27,7 @@ class Pointrelai extends Model
        'Hfermeture',
        'journnée',
        'typeprelais',
-        
-        
+
+
     ];
 }

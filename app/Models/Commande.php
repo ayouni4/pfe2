@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
+    public function pointRelais()
+    {
+        return $this->belongsTo(Pointrelai::class, 'pointrelais');
+    }
+
+
+
     use HasFactory;
     protected $fillable = [
         'nom',
@@ -14,7 +21,7 @@ class Commande extends Model
         'pointdepart',
         'pointrelais',
         'numero',
-        
-        
+
+
     ];
 }

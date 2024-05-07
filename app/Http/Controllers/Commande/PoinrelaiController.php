@@ -6,14 +6,18 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Coli;
 use App\Models\Commande;
+use App\Models\Pointrelai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PoinrelaiController extends Controller
 {
     public function showPointRelaisForm()
-    {  $user = Auth::user();
-        return view('profile.client.prelais',['user' => $user]);
+    {
+        $user = Auth::user();
+        $pointrelais = Pointrelai::all(); // Récupérer tous les points relais
+
+        return view('profile.client.prelais', ['user' => $user, 'pointrelais' => $pointrelais]);
     }
 
 
@@ -23,7 +27,7 @@ class PoinrelaiController extends Controller
             'nom' => 'required',
             'prenom' => 'required',
             'pointdepart' => 'required',
-            'pointrelais' => 'required',
+            'pointrelais' => 'required|exists:pointrelais,id',
             'numero' => 'required|numeric|digits:8',
         ]);
 
