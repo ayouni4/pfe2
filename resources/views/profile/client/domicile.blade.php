@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -95,7 +94,7 @@
                         <a class="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!">
                         <form action="{{ route('logout') }}" method="post">
                         @csrf
-                            <button  type="submit"> <span class="me-2" data-feather="log-out"></span>Sign out</button>
+                            <button type="submit"> <span class="me-2" data-feather="log-out"></span>Sign out</button>
                              </form>
                            </a></div>
                   </div>
@@ -115,39 +114,39 @@
             <div class="row g-5">
               <div>
                 <br/>
-                <form method="post" action="{{ route('commande.store.domicile') }}">
-    @csrf
+                <form method="post" action="/domicile/traitement">
+			      @csrf
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-6"><label class="form-label">Nom</label><input class="form-control form-icon-input" type="text" name="nom" placeholder="Nom" required></div>
+                    <div class="col-md-6"><label class="form-label" >prenom</label>
+                      <input class="form-control form-icon-input" type="text" name="prenom" placeholder="Prénom" required></div>
+                    <div class="col-md-6"><label class="form-label">pointdepart complet*</label>
+                      <input class="form-control form-icon-input" type="text" name="pointdepart" placeholder="ville-region" required></div>
 
-                 <div class="row g-3 mb-3">
-                  <div class="col-md-6"><label class="form-label">Nom</label><input class="form-control form-icon-input" type="text" name="nom" placeholder="Nom" required></div>
-                  <div class="col-md-6"><label class="form-label" >prenom</label><input class="form-control form-icon-input" type="text" name="prenom" placeholder="Prénom" required></div>
-				  <div class="col-md-6"><label class="form-label">pointdepart</label><input class="form-control form-icon-input" type="text" name="pointdepart" placeholder="Point de départ" required></div>
+                     <div class="col-md-6"><label class="form-label" >pointfinal complet*</label>
+                      <input class="form-control form-icon-input" type="text" name="pointfinal" placeholder="ville-region" required>
+                  </div>
+                  <div class="col-md-6"><label class="form-label">Numero Telephone</label>
 
-				  <div class="col-md-6"><label class="form-label">Numero</label><input class="form-control form-icon-input" type="text" name="numero" placeholder="numero" required></div>
-
-                  <div class="col-md-6"><label class="form-label" >pointfinal</label><input class="form-control form-icon-input" type="text" name="pointfinal" placeholder="pointfinal" required></div>
-                  <div class="col-md-6"><label class="form-label" >ville</label><input class="form-control form-icon-input" type="text" name="ville" placeholder="ville" required></div>
-                  <div class="col-md-6"><label class="form-label" >codepostal</label><input class="form-control form-icon-input" type="text" name="codepostal" placeholder="codepostal" required></div>
-                  <div class="col-md-6"><label class="form-label" >city</label><input class="form-control form-icon-input" type="text" name="city" placeholder="city" required></div>
-                  <div class="col-md-6"><label class="form-label" >gouvernement</label><input class="form-control form-icon-input" type="text" name="gouvernement" placeholder="gouvernement" required></div>
-
-
+                      <input class="form-control form-icon-input" type="text" name="numero" placeholder="numero" required></div>
 
 
-                  <button class="btn btn-primary w-100 mb-3" type="submit">Étape suivante : Colis</button>
+                    <div class="col-md-6"><label class="form-label" >Poids colis</label>
+
+                      <input class="form-control form-icon-input" type="text" name="poids" placeholder="Poids" required>
+                  </div>
+                    <div class="col-md-6"><label class="form-label" >Largeur colis</label>
+                      <input class="form-control form-icon-input" type="text" name="largeur" placeholder="Largeur" required>
+                  </div>
+                    <div class="col-md-6"><label class="form-label" >Hauteur colis</label>
+                      <input class="form-control form-icon-input" type="text" name="hauteur" placeholder="Hauteur" required>
+                  </div>
+
+
+
+                  <button class="btn btn-primary w-100 mb-3">valider</button>
+				  <p >{{session('status')}}</p>
                </form>
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="mt-3">
 
 

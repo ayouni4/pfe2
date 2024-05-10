@@ -44,7 +44,9 @@
                 <hr class="bg-200">
                 <div class="divider-content-center">or use email</div>
               </div>
-              <form action="/auth/login" method="post">
+              <form action="{{ route('login.process') }}" method="post">
+
+
         @csrf
         <label for="email">Email:</label>
         <input type="email" id="email" name="email"   class="form-control" required><br><br>
@@ -52,7 +54,7 @@
         <input type="password" id="password" name="password"  class="form-control"  required><br><br>
         <button  type="submit" class="btn btn-primary w-100 mb-3">Sign in</button>
 
-        <div class="text-center"><a class="fs--1 fw-bold" href="/register">Create an account</a></div>
+        <div class="text-center"><a class="fs--1 fw-bold" href="/profile">Create an account</a></div>
     </form>
           </div>
           @include('partials.footer')

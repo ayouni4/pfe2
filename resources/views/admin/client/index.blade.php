@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -185,7 +184,7 @@
               <a  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary mt-3">Ajouter</a>
 <div class="mt-3">
 
-<div id="tableExample2" data-list='{"valueNames":["nom","prenom","pointdedepart","pointderelais","numero","actions"],"page":5,"pagination":true}'>
+<div id="tableExample2" data-list='{"valueNames":["nom","prenom","adressedepart","numero","poids","largeur","hauteur","pointderelais","actions"],"page":5,"pagination":true}'>
   <div class="table-responsive scrollbar">
     <table class="table table-bordered table-striped fs--1 mb-0">
       <thead class="bg-200 text-900">
@@ -193,9 +192,12 @@
         <th class="sort" data-sort="name">#</th>
           <th class="sort" data-sort="nom">nom</th>
           <th class="sort" data-sort="prenom">prenom</th>
-          <th class="sort" data-sort="pointdedepart">pointdedepart</th>
-          <th class="sort" data-sort="pointderelais">pointderelais</th>
+          <th class="sort" data-sort="pointdedepart">adressedepart</th>
           <th class="sort" data-sort="numero">numero</th>
+          <th class="sort" data-sort="pointderelais">poids</th>
+          <th class="sort" data-sort="pointderelais">largeur</th>
+          <th class="sort" data-sort="pointderelais">hauteur</th>
+          <th class="sort" data-sort="pointderelais">pointderelais</th>
           <th class="sort" data-sort="actions">actions</th>
 
         </tr>
@@ -208,9 +210,13 @@
           <td>{{ $c->nom }}</td>
            <td>{{ $c->prenom }}</td>
 
-          <td>{{ $c->pointdepart }}</td>
-          <td>{{ $c->pointrelais }}</td>
+          <td>{{ $c->adressedepart }}</td>
+
         <td>{{ $c->numero }}</td>
+        <td>{{ $c->poids }}</td>
+        <td>{{ $c->largeur }}</td>
+        <td>{{ $c->hauteur }}</td>
+        <td>{{ $c->pointrelais }}</td>
         <td>
         <a  data-bs-toggle="modal" data-bs-target="#editClient{{ $c->id}}"><span class="badge fs--1 bg-secondary">modifier</span></a>
          <a onclick="return confirm('voulez-vous vraiment supprimer?') " href="/admin/client/{{ $c->id}}/delete" ><span class="badge fs--1 bg-danger">supprimer</span></a>
@@ -266,7 +272,7 @@
       </div>
       <form action="/commande/traitement" method="post">
         @csrf
-      <div class="modal-body">
+
 
         <div class="mb-3">
     <input class="form-control form-control-lg" type="text" name="nom" placeholder="Nom" required>
@@ -276,22 +282,29 @@
   <input class="form-control form-control" type="text" name="prenom" placeholder="Prénom" required>
   </div>
   <div class="mb-3">
-  <input class="form-control form-control" type="text" name="pointdepart" placeholder="Point de départ" required>
+  <input class="form-control form-control" type="text" name="adressedepart" placeholder="adresse de depart" required>
  </div>
-  <div class="mb-3">
-  <input class="form-control form-control"  name="pointrelais" placeholder="pointrelais" required>
-  </div>
+
   <div class="mb-3">
   <input class="form-control form-control" type="text" name="numero" placeholder="numero" required>
   </div>
+  <div class="mb-3">
+    <input class="form-control form-control"  name="poids" placeholder="poids" required>
+    </div>
+    <div class="mb-3">
+        <input class="form-control form-control"  name="largeur" placeholder="largeur" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control form-control"  name="hauteur" placeholder="hauteur" required>
+            </div>
 
 
-  <select class="form-select" aria-label="Default select example"  name="pointrelais" placeholder="pointrelais" required>
-  <option selected="">1</option>
-  <option value="1">2</option>
-  <option value="2">3</option>
 
-   </select>
+    <select class="form-select" id="pointrelaisSelect" name="pointrelais" required>
+        <option value="">Sélectionner un point relais</option>
+        <!-- Les options seront chargées dynamiquement via JavaScript -->
+    </select>
+
 
 
 
@@ -327,19 +340,27 @@
   <input class="form-control form-control" type="text" name="prenom"  value="{{$c->prenom}}" placeholder="Prénom" required>
 </div>
 <div class="mb-3">
-  <input class="form-control form-control" type="text" name="pointdepart" value="{{$c->pointdepart}}"   placeholder="Point de départ" required>
+  <input class="form-control form-control" type="text" name="adressedepart" value="{{$c->adressedepart}}"   placeholder="Point de départ" required>
 </div>
-<select class="form-select" aria-label="Default select example"  name="pointrelais" value="{{$c->pointrelais}}"  placeholder="pointrelais" required>
-  <option selected="">1</option>
-  <option value="1">2</option>
-  <option value="2">3</option>
 
-</select>
 <div class="mb-3">
   <input class="form-control form-control" type="text" name="numero" value="{{$c->numero}}" placeholder="numero" required>
 </div>
+<div class="mb-3">
+    <input class="form-control form-control" type="text" name="poids"  value="{{$c->poids}}" placeholder="poids" required>
+  </div>
+  <div class="mb-3">
+    <input class="form-control form-control" type="text" name="largeur"  value="{{$c->largeur}}" placeholder="largeur" required>
+  </div>
+  <div class="mb-3">
+    <input class="form-control form-control" type="text" name="hauteur"  value="{{$c->hauteur}}" placeholder="hauteur" required>
+  </div>
+  <select class="form-select" aria-label="Default select example"  name="pointrelais" value="{{$c->pointrelais}}"  placeholder="pointrelais" required>
+    <option selected="">1</option>
+    <option value="1">2</option>
+    <option value="2">3</option>
 
-
+  </select>
 
 
 <input type="hidden" value="{{ $c->id}}" name="id_client">
@@ -357,6 +378,45 @@
   </div>
 </div>
 @endforeach
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const pointrelaisSelect = document.getElementById('pointrelaisSelect');
+
+        function loadPointRelaisAddresses() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', '/api/pointrelais', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const data = JSON.parse(xhr.responseText);
+                        pointrelaisSelect.innerHTML = ''; // Efface toutes les options actuelles
+                        data.forEach(pointrelais => {
+                            const option = document.createElement('option');
+                            option.value = pointrelais.id;
+                            option.textContent = pointrelais.nom + ' - ' + pointrelais.adresse;
+                            pointrelaisSelect.appendChild(option);
+                        });
+                    } else {
+                        console.error('Erreur lors du chargement des points relais :', xhr.statusText);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Événement de changement sur le menu déroulant des points relais
+        pointrelaisSelect.addEventListener('change', function() {
+            const selectedPointRelaisId = pointrelaisSelect.value;
+            console.log('Point Relais sélectionné :', selectedPointRelaisId);
+            // Autres actions à effectuer lorsque la sélection change
+        });
+
+        // Chargement initial des points relais lors du chargement de la page
+        loadPointRelaisAddresses();
+    });
+
+    </script>
 
     <script src=" {{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="  {{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>

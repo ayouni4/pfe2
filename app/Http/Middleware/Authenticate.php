@@ -16,21 +16,21 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+       // if (! $request->expectsJson()) {
             // Vérifie si l'utilisateur tente d'accéder à '/profile'
-            if ($request->is('profile')) {
-                return route('login'); // Redirige vers la page de connexion pour '/profile'
-            }
+         //   if ($request->is('profile')) {
+//return route('login'); // Redirige vers la page de connexion pour '/profile'
+           // }
 
             // Vérifie si l'utilisateur tente d'accéder à '/admin/dashboard'
-            if ($request->is('admin/dashboard')) {
-                return route('admin'); // Redirige vers la page de connexion pour '/admin/dashboard'
-            }
+           // if ($request->is('admin/dashboard')) {
+             //   return route('admin'); // Redirige vers la page de connexion pour '/admin/dashboard'
+           // }
 
             // Par défaut, redirige vers la route 'login' pour les autres cas
-            return route('login');
-        }
+           // return route('login');
+       // }
 
-        return null; // ou retourne une réponse appropriée pour les requêtes JSON
+       // return null; // ou retourne une réponse appropriée pour les requêtes JSON
     }
 }

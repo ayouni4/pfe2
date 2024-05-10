@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Hash;
 class DomicileController extends Controller
 {
     public function client_domicile(Request $request){
+        $user = Auth::user();
         $domiciles = Domicile::all();
-        return view('admin.client.domicile', compact('domiciles'));
+        return view('admin.client.domicile', ['user' => $user], compact('domiciles'));
 
     }
+
 
     public function profile_domicile (Request $request){
         $user = Auth::user();
@@ -41,10 +43,11 @@ class DomicileController extends Controller
             'pointdepart' => 'required',
             'pointfinal' => 'required',
             'numero' => 'required|numeric|digits:8',
-            'ville' => 'required',
-            'codepostal' => 'required',
-            'city' => 'required',
-            'gouvernement' => 'required',
+            'poids' => 'required',
+            'largeur' => 'required',
+            'hauteur' => 'required',
+
+
         ]);
 
         $domicile = new Domicile();
@@ -53,11 +56,11 @@ class DomicileController extends Controller
         $domicile->prenom = $request->input('prenom');
         $domicile->pointdepart = $request->input('pointdepart');
         $domicile->pointfinal = $request->input('pointfinal');
-        $domicile->ville = $request->input('ville');
-        $domicile->codepostal = $request->input('codepostal');
-        $domicile->city = $request->input('city');
-        $domicile->gouvernement = $request->input('gouvernement');
         $domicile->numero = $request->input('numero');
+        $domicile->poids = $request->input('poids');
+        $domicile->largeur = $request->input('largeur');
+        $domicile->hauteur = $request->input('hauteur');
+
 
         if ($domicile->save()) {
             return redirect()->back()->with('status', 'Votre commande a été enregistrée avec succès.');
@@ -86,44 +89,9 @@ class DomicileController extends Controller
 
             }
         }
-    }
-
-
-    public function update(Request $request){
-
-        $request->validate([
-            'nom' => 'required',
-            'prenom' => 'required',
-            'pointdepart' => 'required',
-            'pointfinal' => 'required',
-            'numero' => 'required|numeric|digits:8',
-            'ville' => 'required',
-            'codepostal' => 'required',
-            'city' => 'required',
-            'gouvernement' => 'required',
-        ]);
-        $id = $request->id_domicile;
-        $domicile = Domicile::find($id);
-
-        $domicile->nom = $request->input('nom');
-        $domicile->prenom = $request->input('prenom');
-        $domicile->pointdepart = $request->input('pointdepart');
-        $domicile->pointfinal = $request->input('pointfinal');
-        $domicile->ville = $request->input('ville');
-        $domicile->codepostal = $request->input('codepostal');
-        $domicile->city = $request->input('city');
-        $domicile->gouvernement = $request->input('gouvernement');
-        $domicile->numero = $request->input('numero');
-
-        if( $domicile->update()){
-            return redirect()->back()->with('status', 'Votre formulaire a été enregistré avvec succès.');
-          }else{
-          echo "error";
-          }
-
-    }
 }
 
 
 
 
+}

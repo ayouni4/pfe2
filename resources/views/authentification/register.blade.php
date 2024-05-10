@@ -47,19 +47,43 @@
                 <hr class="bg-200">
                 <div class="divider-content-center">or use email</div>
               </div>
-              <form action="/auth/register" method="post">
-        @csrf
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"  class="form-control" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email"  class="form-control"  required><br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" class="form-control"  required><br><br>
-        <button  type="submit" class="btn btn-primary w-100 mb-3">Sign up</button>
-    </form>
-			  @if (session('status'))
-				<a href="#" >{{session('status')}}</a>
-				@endif
+              <form method="POST" action="{{ route('register.post') }}">
+    @csrf
+    <label for="name">Nom :</label>
+    <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required><br>
+
+    <label for="email">E-mail :</label>
+    <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" required><br>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" class="form-control" required><br>
+
+    <label for="numero">Numéro :</label>
+    <input type="text" id="numero" name="numero" class="form-control" value="{{ old('numero') }}" required><br>
+
+    <label for="adresse">Adresse :</label>
+    <input type="text" id="adresse" name="adresse" class="form-control" value="{{ old('adresse') }}" required><br>
+
+    <label for="codepostal">Code Postal :</label>
+    <input type="text" id="codepostal" name="codepostal" class="form-control" value="{{ old('codepostal') }}" required><br>
+
+    <label for="cin">CIN :</label>
+    <input type="text" id="cin" name="cin" class="form-control" value="{{ old('cin') }}" required><br>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <button type="submit" class="btn btn-primary w-100 mb-3">S'inscrire</button>
+</form>
+
+
 
             </div>
           </div>

@@ -30,34 +30,41 @@ class CommandeController extends Controller
 
     }
 //ajouter les commandes dans BD
-public function traitement_espace(Request $request)
-{
-    $request->validate([
-        'nom' => 'required|string',
-        'prenom' => 'required|string',
-        'pointdepart' => 'required|string',
-        'pointrelais' => 'required|exists:pointrelais,id',
-        'numero' => 'required|numeric|digits:8',
-    ]);
+    public function traitement_espace(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'adressedepart' => 'required',
 
-    $commande = new Commande();
+            'numero' => 'required|numeric|digits:8',
+            'poids' => 'required',
+            'largeur' => 'required',
+            'hauteur' => 'required',
+            'pointrelais' => 'required',
+        ]);
 
-    $commande->nom = $request->input('nom');
-    $commande->prenom = $request->input('prenom');
-    $commande->pointdepart = $request->input('pointdepart');
-    $commande->pointrelais = $request->input('pointrelais');
-    $commande->numero = $request->input('numero');
+        $commande = new Commande();
 
-    // Débogage pour vérifier les données de la commande
-    dd($commande);
+        $commande->nom = $request->input('nom');
+        $commande->prenom = $request->input('prenom');
+        $commande->adressedepart = $request->input('adressedepart');
 
-    if ($commande->save()) {
-        return redirect()->back()->with('status', 'Votre commande a été enregistrée avec succès.');
-    } else {
-        return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'enregistrement de la commande.');
+        $commande->numero = $request->input('numero');
+        $commande->poids = $request->input('poids');
+        $commande->largeur = $request->input('largeur');
+        $commande->hauteur = $request->input('hauteur');
+        $commande->pointrelais = $request->input('pointrelais');
+
+      if( $commande->save()){
+        return redirect()->back()->with('status', 'Votre commande a été enregistré avec succès.');
+      }else{
+      echo "error";
+      }
+
+
+
     }
-}
-
     public function destroy($id) {
 
         $Commande = Commande::find($id);
@@ -82,18 +89,26 @@ public function traitement_espace(Request $request)
         $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
-            'pointdepart' => 'required',
-            'pointrelais' => 'required',
+            'adressedepart' => 'required',
+
             'numero' => 'required|numeric|digits:8',
+            'poids' => 'required',
+            'largeur' => 'required',
+            'hauteur' => 'required',
+            'pointrelais' => 'required',
         ]);
         $id = $request->id_client;
         $commande = Commande::find($id);
 
         $commande->nom = $request->input('nom');
         $commande->prenom = $request->input('prenom');
-        $commande->pointdepart = $request->input('pointdepart');
-        $commande->pointrelais = $request->input('pointrelais');
+        $commande->adressedepart = $request->input('adressedepart');
+
         $commande->numero = $request->input('numero');
+        $commande->pointrelais = $request->input('poids');
+        $commande->largeur = $request->input('largeur');
+        $commande->hauteur = $request->input('hauteur');
+        $commande->pointrelais = $request->input('pointrelais');
 
         if( $commande->update()){
             return redirect()->back()->with('status', 'Votre formulaire a été enregistré avvec succès.');
@@ -102,6 +117,5 @@ public function traitement_espace(Request $request)
           }
 
     }
-
 
 }

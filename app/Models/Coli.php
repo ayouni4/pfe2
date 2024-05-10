@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coli extends Model
 {
+
+
     use HasFactory;
     protected $fillable = [
         'code',
@@ -18,5 +20,7 @@ class Coli extends Model
         'type_colis',
         'type_matier',
     ];
+
+
 
 }

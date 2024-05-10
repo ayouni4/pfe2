@@ -14,11 +14,11 @@ class Domicile extends Model
 
         'pointdepart',
         'pointfinal',
-        'ville',
-        'city',
-        'gouvernement',
-        'codepostal',
-        'numero',
+        '  numero',
+        'poids',
+        'largeur',
+        'hauteur',
+
 
     ];
 }

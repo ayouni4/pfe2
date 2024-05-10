@@ -9,25 +9,18 @@ class Pointrelai extends Model
 {
 
 
-    public function commandes()
-    {
-        return $this->hasMany(Commande::class, 'pointrelais');
-    }
-
-
 
     use HasFactory;
     protected $fillable = [
         'nom',
-        'responsable',
-        'numero',
-       'matricule',
-       'adresse',
-       'Houvert',
-       'Hfermeture',
-       'journnée',
-       'typeprelais',
+        'prenom',
+        'adressedepart',
 
+        'numero',
+        'poids',
+        'largeur',
+        'hauteur',
+        'pointrelais',
 
     ];
 }

@@ -45,11 +45,16 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('profile');
+            // Authentification réussie
+            return redirect()->route('admin.dashboard'); // Utilisez le nom de route correct
         }
 
         return back()->withErrors(['email' => 'Invalid credentials']);
     }
+
+
+
+
 
     public function logout()
     {

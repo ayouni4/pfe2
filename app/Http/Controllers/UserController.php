@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -23,46 +24,50 @@ class UserController extends Controller
     public function traitement_register(Request $request)
     {
         $request->validate([
-            'email' => 'email|required|unique:users',
-            'password' =>'required|min:8',
-            'name' => 'required',
-
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'numero' => 'required',
+            'adresse' => 'required',
+            'codepostal' => 'required',
+            'cin' => 'required|unique:users,cin',
         ]);
+
         $user = new User();
-        $user->email = $request->input('email');
-        $user->password = bcrypt( $request->input('password'));
         $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->numero = $request->input('numero');
+        $user->adresse = $request->input('adresse');
+        $user->codepostal = $request->input('codepostal');
+        $user->cin = $request->input('cin');
 
         $user->save();
-        return back()->with('status','votre compte est bien creer');
 
+        return back()->with('status', 'Votre compte a bien été créé');
     }
 
-    public function traitement_login(Request $request){
+
+
+    public function traitement_login(Request $request)
+    {
         $request->validate([
-            'email' => 'email|required',
-            'password' =>'required|min:8',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
         ]);
-        $user = User::where('email', $request->input('email'))->first();
-        if($user){
-            if(Hash::check($request->input('password'),$user->password)){
-                $request->session()->put('user',$user);
-                return  redirect('/formulaire');//commande
-            }else{
-                return back()->with('status','identifiant ou mot de passe in correct');
-            }
-        }else{
-            return back()->with('status','Désolé vous n\'aver pas de compte cet email');
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentification réussie
+            return redirect()->route('profile'); // Rediriger vers le profil après connexion réussie
+        } else {
+            // Échec de l'authentification
+            return back()->with('error', 'Identifiant ou mot de passe incorrect.');
         }
 
+
     }
-    public function logout(Request $request){
-
-        $request->session()->forget('client');
-        return redirect('/login')->with('status','vous venez de vous déconnecter');
-    }
-
-
 
 
 

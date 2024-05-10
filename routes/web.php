@@ -41,18 +41,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['prefix' => 'auth'], function () {
-    // Routes liées à l'inscription
-    Route::get('registeer', [AuthController::class, 'showRegistrationForm'])->name('register');
-    Route::post('registeer', [AuthController::class, 'register'])->name('registeer.save');
 
-    // Routes liées à la connexion admin
-    Route::get('admin', [AuthController::class, 'showLoginForm'])->name('admin');
-    Route::post('admin', [AuthController::class, 'login'])->name('admin.login');
-
-    // Route de déconnexion
-    Route::get('logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
-});
 
 
 
@@ -63,18 +52,17 @@ Route::view('home','home');
 
 
 
-Route::get('/auth/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/auth/register', [AuthController::class, 'register']);
-Route::get('/auth/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/auth/login', [AuthController::class, 'login']);
+Route::get('/registeer', [AuthController::class, 'showRegistrationForm'])->name('registeer');
+Route::post('/registeer', [AuthController::class, 'register']);
+Route::get('/admin', [AuthController::class, 'showLoginForm'])->name('admin');
+Route::post('/admin', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
 
 
-
-Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('redirect.to.login');
 Route::get('/profile/client',[CommandeController::class,'profile_index']);
 Route::get('/profile/domicile',[DomicileController::class,'profile_domicile']);
 Route::get('/profile/livreur',[FormulaireController::class,'profile_index']);
@@ -84,12 +72,9 @@ Route::get('/profile/garcon',[GarconformulaireController::class,'profile_index']
 
 
 Route::get('/register', [UserController::class, 'form_register'])->name('register');
-Route::post('/register/traitement', [UserController::class, 'traitement_register']);
+Route::post('/register', [UserController::class, 'traitement_register'])->name('register.post');
 Route::get('/login', [UserController::class, 'form_login'])->name('login');
-Route::post('/login/traitement', [UserController::class, 'traitement_login']);
-Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
-
-
+Route::post('/login/traitement', [UserController::class, 'traitement_login'])->name('login.process');
 
 
 
@@ -174,8 +159,10 @@ Route::get('/pointrelai/formulaire',[PointrelaiformulaireController::class,'form
 Route::post('/pointrelai/formulaire/traitement',[PointrelaiformulaireController::class,'traitement_pointrelai']);
 
 //dashbord
-Route::get('/admin/dashbord',[AdminController::class,'form_admin'])->name('/admin/dashbord')->middleware('auth');
 
+Route::get('/admin/dashboard', [AdminController::class, 'form_admin'])
+    ->name('admin.dashboard')
+    ->middleware('redirect.to.admin.login');
 Route::get('/admin/livreur',[FormulaireController::class,'livreur_index']);
 Route::get('/admin/livreur/{id}/delete',[FormulaireController::class,'destroy']);
 Route::post('/admin/livreur/{id}/update',[FormulaireController::class,'update']);
@@ -245,43 +232,7 @@ Route::post('/colis/traitement',[ColiController::class,'store']);
 
 
 
-// Route pour afficher le formulaire d'ajout d'une devise
-Route::get('/currencies/create', [CurrencyController::class, 'create'])->name('currencies.create');
-
-// Route pour enregistrer une nouvelle devise
-Route::post('/currencies', [CurrencyController::class, 'store'])->name('currencies.store');
-
-// Route pour afficher la liste des devises
-Route::get('/currencies', [CurrencyController::class, 'index'])->name('currencies.index');
-
-// Route pour supprimer une devise
-Route::delete('/currencies/{currency}', [CurrencyController::class, 'destroy'])->name('currencies.destroy');
-
-
-
-
-
-// Route for displaying the tax management page
-Route::get('taxes', [TaxController::class, 'index'])->name('taxes.index');
-
-// Route for displaying the form to create a new tax
-Route::get('taxes/create', [TaxController::class, 'create'])->name('taxes.create');
-
-// Route for storing a new tax record
-Route::post('taxes', [TaxController::class, 'store'])->name('taxes.store');
-
-// Route for displaying the form to edit a tax record
-Route::get('taxes/{id}/edit', [TaxController::class, 'edit'])->name('taxes.edit');
-
-// Route for updating a tax record
-Route::put('taxes/{id}', [TaxController::class, 'update'])->name('taxes.update');
-
-// Route for deleting a tax record
-Route::delete('taxes/{id}', [TaxController::class, 'destroy'])->name('taxes.destroy');
-
-
 
 
 
 Route::get('/ordrelivraison', [OrdrelivraisonController::class, 'showColisData'])->name('ordrelivraison');
-

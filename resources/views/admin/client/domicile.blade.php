@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en-US" dir="ltr">
 
@@ -27,22 +26,25 @@
   </head>
 
   <body>
-
     <main class="main" id="top">
       <div class="container-fluid px-0">
         <nav class="navbar navbar-light navbar-vertical navbar-vibrant navbar-expand-lg">
           <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
             <div class="navbar-vertical-content scrollbar">
               <ul class="navbar-nav flex-column" id="navbarVerticalNav">
-              <li class="nav-item"><a class="nav-link active" href="/admin/client">
+                <li class="nav-item"><a class="nav-link active" href="/admin/client">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">commande P.relais</span></div>
+
                   </a></li>
-                <li class="nav-item"><a class="nav-link active" href="/admin/domicile">
+
+                  <li class="nav-item"><a class="nav-link active" href="/admin/domicile">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">commande a domicile</span></div>
+
                   </a></li>
                   <li class="nav-item"><a class="nav-link active" href="/admin/livreur">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">livreur</span></div>
                   </a></li>
+
                   <li class="nav-item"><a class="nav-link active" href="/admin/pointrelai">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">point de relais</span></div>
                   </a></li>
@@ -58,12 +60,25 @@
                   <li class="nav-item"><a class="nav-link active" href="/users">
                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">user</span></div>
                   </a></li>
+                  <li class="nav-item"><a class="nav-link active" href="/ordrelivraison">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">ordre livraison colis</span></div>
+                  </a></li>
+                  <li class="nav-item"><a class="nav-link active" href="/ordredomicile">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">ordre livraison domicile</span></div>
+                  </a></li>
 
+
+
+                  <li class="nav-item"><a class="nav-link active" href="/currencies">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">currencies</span></div>
+                  </a></li>
+                  <li class="nav-item"><a class="nav-link active" href="/taxes">
+                    <div class="d-flex align-items-center"><span class="nav-link-icon"><span data-feather="cast"></span></span><span class="nav-link-text">taxes</span></div>
+                  </a></li>
 
 
               </ul>
             </div>
-            <div class="navbar-vertical-footer"><a class="btn btn-link border-0 fw-semi-bold d-flex ps-0" href="#!"><span class="navbar-vertical-footer-icon" data-feather="log-out"></span><span>Settings</span></a></div>
           </div>
         </nav>
         <nav class="navbar navbar-light navbar-top navbar-expand">
@@ -82,81 +97,22 @@
               <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control form-control-sm search-input search min-h-auto" type="search" placeholder="Search..." aria-label="Search"> <span class="fas fa-search search-box-icon"></span></form>
             </div>
             <ul class="navbar-nav navbar-nav-icons ms-auto flex-row">
-              <li class="nav-item dropdown"><a class="nav-link" id="navbarDropdownNotification" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-700" data-feather="bell" style="height:20px;width:20px;"></span></a></li>
-              <li class="nav-item dropdown"><a class="nav-link notification-indicator notification-indicator-primary" id="navbarDropdownSettings" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-700" data-feather="settings" style="height:20px;width:20px;"></span></a></li>
-              <li class="nav-item dropdown"><a class="nav-link" id="navbarDropdownNindeDots" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="2" cy="2" r="2" fill="#6C6E71"></circle>
-                    <circle cx="2" cy="8" r="2" fill="#6C6E71"></circle>
-                    <circle cx="2" cy="14" r="2" fill="#6C6E71"></circle>
-                    <circle cx="8" cy="8" r="2" fill="#6C6E71"></circle>
-                    <circle cx="8" cy="14" r="2" fill="#6C6E71"></circle>
-                    <circle cx="14" cy="8" r="2" fill="#6C6E71"></circle>
-                    <circle cx="14" cy="14" r="2" fill="#6C6E71"></circle>
-                    <circle cx="8" cy="2" r="2" fill="#6C6E71"></circle>
-                    <circle cx="14" cy="2" r="2" fill="#6C6E71"></circle>
-                  </svg></a>
-                <div class="dropdown-menu dropdown-menu-end py-0 dropdown-nide-dots shadow border border-300" aria-labelledby="navbarDropdownNindeDots">
-                  <div class="card bg-white position-relative border-0">
-                    <div class="card-body pt-3 px-3 pb-0 overflow-auto scrollbar" style="height: 20rem;">
-                      <div class="row text-center align-items-center gx-0 gy-0">
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/behance.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Behance</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/google-cloud.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Cloud</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/slack.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Slack</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/github.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Github</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/bitbucket.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">BitBucket</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/google-drive.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Drive</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/trello.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Trello</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/figma.png" alt="" width="20">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Figma</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/twitter.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Twitter</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/pinterest.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Pinterest</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/linkedin.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Linkedin</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/google-maps.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Maps</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/google-photos.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Photos</p>
-                          </a></div>
-                        <div class="col-4"><a class="d-block hover-bg-200 p-2 rounded-3 text-center text-decoration-none mb-3" href="#!" target="_blank"><img src="assets/img/nav-icons/spotify.png" alt="" width="30">
-                            <p class="mb-0 text-black text-truncate fs--2 mt-1 pt-1">Spotify</p>
-                          </a></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <div class="avatar avatar-l status-online  me-4">
-                <div class="avatar-name rounded-circle"><span>A</span></div>
-             </div>                </a>
-                <div class="dropdown-menu dropdown-menu-end py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
+
+
+            <li class="nav-item dropdown"><a class="nav-link lh-1 px-0 ms-5" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <div class="avatar avatar-l status-online  me-4">
+                <div class="avatar-name rounded-circle"><span> {{ strtoupper(substr($user->email, 0, 1)) }}</div>
+             </div>
+
+                </a>
+               <div class="dropdown-menu dropdown-menu-end py-0 dropdown-profile shadow border border-300" aria-labelledby="navbarDropdownUser">
                   <div class="card bg-white position-relative border-0">
                     <div class="card-body p-0 overflow-auto scrollbar" style="height: 18rem;">
                       <div class="text-center pt-4 pb-3">
                       <div class="avatar avatar-l status-online  me-4">
-                <div class="avatar-name rounded-circle"><span>A</span></div>
-             </div>                        <h6 class="mt-2">admin</h6>
+                             <div class="avatar-name rounded-circle"><span> {{ strtoupper(substr($user->email, 0, 1)) }}</div>
+                      </div>
+                      <p> {{ $user->email }}</p>
                       </div>
                       <div class="mb-3 mx-3"><input class="form-control form-control-sm" id="statusUpdateInput" placeholder="Update your status"></div>
                       <ul class="nav d-flex flex-column mb-2 pb-1">
@@ -188,7 +144,7 @@
               <a  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary mt-3">Ajouter</a>
 <div class="mt-3">
 
-<div id="tableExample2" data-list='{"valueNames":["nom","prenom","pointdedepart","pointfinal","ville","city","gouvernement","codepostal","numero","actions"],"page":5,"pagination":true}'>
+<div id="tableExample2" data-list='{"valueNames":["nom","prenom","pointdedepart","pointfinal","numero","poids","largeur","hauteur","actions"],"page":5,"pagination":true}'>
   <div class="table-responsive scrollbar">
     <table class="table table-bordered table-striped fs--1 mb-0">
       <thead class="bg-200 text-900">
@@ -198,11 +154,11 @@
           <th class="sort" data-sort="prenom">prenom</th>
           <th class="sort" data-sort="pointdedepart">pointdedepart</th>
           <th class="sort" data-sort="pointderelais">pointfinal</th>
-          <th class="sort" data-sort="pointderelais">ville</th>
-          <th class="sort" data-sort="pointderelais">city</th>
-          <th class="sort" data-sort="pointderelais">gouvernement</th>
-          <th class="sort" data-sort="pointderelais">codepostal</th>
-          <th class="sort" data-sort="numero">numero</th>
+          <th class="sort" data-sort="pointderelais">numero</th>
+          <th class="sort" data-sort="pointderelais">poids</th>
+          <th class="sort" data-sort="pointderelais">largeur</th>
+          <th class="sort" data-sort="pointderelais">hauteur</th>
+
           <th class="sort" data-sort="actions">actions</th>
 
         </tr>
@@ -217,11 +173,11 @@
 
           <td>{{ $c->pointdepart }}</td>
           <td>{{ $c->pointfinal }}</td>
-          <td>{{ $c->ville }}</td>
-          <td>{{ $c->codepostal }}</td>
-          <td>{{ $c->city }}</td>
-          <td>{{ $c->gouvernement }}</td>
-        <td>{{ $c->numero }}</td>
+          <td>{{ $c->numero }}</td>
+          <td>{{ $c->poids }}</td>
+          <td>{{ $c->largeur }}</td>
+          <td>{{ $c->hauteur }}</td>
+
         <td>
         <a  data-bs-toggle="modal" data-bs-target="#editDomicile{{ $c->id}}"><span class="badge fs--1 bg-secondary">modifier</span></a>
          <a onclick="return confirm('voulez-vous vraiment supprimer?') " href="/admin/domicile/{{ $c->id}}/delete" ><span class="badge fs--1 bg-danger">supprimer</span></a>
@@ -236,9 +192,11 @@
     </table>
   </div>
   <div class="d-flex justify-content-center mt-3">
-    <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+    <button class="btn btn-sm btn-falcon-default me-1" type="button" title="Previous" data-list-pagination="prev">
+        <span class="fas fa-chevron-left"></span></button>
     <ul class="pagination mb-0"></ul>
-    <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+    <button class="btn btn-sm btn-falcon-default ms-1" type="button" title="Next" data-list-pagination="next">
+        <span class="fas fa-chevron-right"></span></button>
   </div>
 </div>
 </div>
@@ -256,7 +214,9 @@
           <footer class="footer">
             <div class="row g-0 justify-content-between align-items-center h-100 mb-3">
               <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span><span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a></p>
+                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span>
+                    <span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a>
+                </p>
               </div>
               <div class="col-12 col-sm-auto text-center">
                 <p class="mb-0 text-600">v1.1.0</p>
@@ -294,20 +254,18 @@
   </div>
 
   <div class="mb-3">
-  <input class="form-control form-control"  name="ville" placeholder="ville" required>
+    <input class="form-control form-control" type="text" name="numero" placeholder="numero" required>
+    </div>
+  <div class="mb-3">
+  <input class="form-control form-control"  name="poids" placeholder="poids-colis" required>
   </div>
   <div class="mb-3">
-  <input class="form-control form-control"  name="codepostal" placeholder="codepostal" required>
+  <input class="form-control form-control"  name="largeur" placeholder="largeur-colis" required>
   </div>
   <div class="mb-3">
-  <input class="form-control form-control"  name="city" placeholder="city" required>
+  <input class="form-control form-control"  name="hauteur" placeholder="hauteur-colis" required>
   </div>
-  <div class="mb-3">
-  <input class="form-control form-control"  name="gouvernement" placeholder="gouvernement" required>
-  </div>
-  <div class="mb-3">
-  <input class="form-control form-control" type="text" name="numero" placeholder="numero" required>
-  </div>
+
 
 
 
@@ -352,21 +310,19 @@
   <input class="form-control form-control" type="text" name="pointfinal" value="{{$c->pointfinal}}"   placeholder="pointfinal" required>
 </div>
 <div class="mb-3">
-  <input class="form-control form-control" type="text" name="ville" value="{{$c->ville}}"   placeholder="ville" required>
+    <input class="form-control form-control" type="text" name="numero" value="{{$c->numero}}" placeholder="numero" required>
+  </div>
+<div class="mb-3">
+  <input class="form-control form-control" type="text" name="poids" value="{{$c->poids}}"   placeholder="poids" required>
 </div>
 <div class="mb-3">
-  <input class="form-control form-control" type="text" name="codepostal" value="{{$c->codepostal}}"   placeholder="codepostal" required>
-</div>
-<div class="mb-3">
-  <input class="form-control form-control" type="text" name="city" value="{{$c->city}}"   placeholder="city" required>
+  <input class="form-control form-control" type="text" name="largeur" value="{{$c->largeur}}"   placeholder="largeur" required>
 </div>
 
 <div class="mb-3">
-  <input class="form-control form-control" type="text" name="gouvernement" value="{{$c->gouvernement}}"   placeholder="gouvernement" required>
+  <input class="form-control form-control" type="text" name="hauteur" value="{{$c->hauteur}}"   placeholder="hauteur" required>
 </div>
-<div class="mb-3">
-  <input class="form-control form-control" type="text" name="numero" value="{{$c->numero}}" placeholder="numero" required>
-</div>
+
 
 
 
