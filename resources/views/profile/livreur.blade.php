@@ -117,7 +117,9 @@
                   <div class="col-md-6"><label class="form-label">Nom</label><input class="form-control form-icon-input" type="text" name="nom" placeholder="Nom" required></div>
                   <div class="col-md-6"><label class="form-label" >prenom</label><input class="form-control form-icon-input" type="text" name="prenom" placeholder="Prénom" required></div>
 				  <div class="col-md-6"><label class="form-label">Numero</label><input class="form-control form-icon-input" type="text" name="numero" placeholder="numero" required></div>
-				  <div class="col-md-6"><label class="form-label">Trajectoire</label><input class="form-control form-icon-input" type="text" name="trajectoire" placeholder="trajectoire" required></div>
+                  <div class="col-md-6"><label class="form-label">pointdepart</label><input class="form-control form-icon-input" type="text" name="pointdepart" placeholder="pointdepart" required></div>
+
+				  <div class="col-md-6"><label class="form-label">pointfinal</label><input class="form-control form-icon-input" type="text" name="pointfinal" placeholder="pointfinal" required></div>
                   <div class="col-md-6"><label class="form-label" >Matricule</label><input class="form-control form-icon-input" type="text" name="matricule" placeholder="matricule" required></div>
 
 				  <div class="col-md-6">

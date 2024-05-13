@@ -24,6 +24,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\TaxController;
 use App\Http\Controllers\OrdrelivraisonController;
+use App\Models\Domicile;
+use App\Models\Livreur;
 use App\Models\Pointrelai;
 
 // Définir une route pour récupérer les adresses des pointrelais
@@ -32,6 +34,10 @@ Route::get('/api/pointrelais', function() {
 
     return response()->json($pointrelais);
 });
+
+
+
+Route::get('/get-livreur-details/{id}', [LivreurController::class, 'getDetails']);
 
 
 Route::get('/', function () {
@@ -68,6 +74,7 @@ Route::get('/profile/domicile',[DomicileController::class,'profile_domicile']);
 Route::get('/profile/livreur',[FormulaireController::class,'profile_index']);
 Route::get('/profile/pointrelai',[PointrelaiformulaireController::class,'profile_index']);
 Route::get('/profile/garcon',[GarconformulaireController::class,'profile_index']);
+
 
 
 
@@ -180,6 +187,7 @@ Route::post('/admin/domicile/{id}/update',[DomicileController::class,'update']);
 
 
 
+
 Route::get('/admin/garcon',[GarconformulaireController::class,'garcon_index']);
 Route::get('/admin/garcon/{id}/delete',[GarconformulaireController::class,'destroy']);
 Route::post('/admin/garcon/{id}/update',[GarconformulaireController::class,'update']);
@@ -227,12 +235,4 @@ Route::post('permissions',[PermissionController::class,'store']);
 Route::get('/colis',[ColiController::class,'showCreateForm'])->name('colis');
 
 Route::post('/colis/traitement',[ColiController::class,'store']);
-
-
-
-
-
-
-
-
 Route::get('/ordrelivraison', [OrdrelivraisonController::class, 'showColisData'])->name('ordrelivraison');

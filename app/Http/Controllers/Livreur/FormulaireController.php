@@ -44,7 +44,8 @@ class FormulaireController extends Controller
             'nom' => 'required',
             'prenom' => 'required',
             'numero' => 'required|numeric|digits:8',
-            'trajectoire' => 'required',
+            'pointdepart' => 'required',
+            'pointfinal' => 'required',
             'typedetransport' => 'required',
             'matricule' => 'required',
         ]);
@@ -55,7 +56,8 @@ class FormulaireController extends Controller
         $livreur->nom = $request->input('nom');
         $livreur->prenom = $request->input('prenom');
         $livreur->numero = $request->input('numero');
-        $livreur->trajectoire = $request->input('trajectoire');
+        $livreur->pointdepart = $request->input('pointdepart');
+        $livreur->pointfinal = $request->input('pointfinal');
         $livreur->typedetransport = $request->input('typedetransport');
         $livreur->matricule = $request->input('matricule');
 
@@ -91,7 +93,8 @@ class FormulaireController extends Controller
             'nom' => 'required',
             'prenom' => 'required',
             'numero' => 'required|numeric|digits:8',
-            'trajectoire' => 'required',
+            'pointdepart' => 'required',
+            'pointfinal' => 'required',
             'typedetransport' => 'required',
             'matricule' => 'required',
         ]);
@@ -111,7 +114,8 @@ class FormulaireController extends Controller
         $livreur->nom = $request->input('nom');
         $livreur->prenom = $request->input('prenom');
         $livreur->numero = $request->input('numero');
-        $livreur->trajectoire = $request->input('trajectoire');
+        $livreur->pointdepart = $request->input('pointdepart');
+        $livreur->pointfinal = $request->input('pointfinal');
         $livreur->typedetransport = $request->input('typedetransport');
         $livreur->matricule = $request->input('matricule');
 
@@ -121,6 +125,18 @@ class FormulaireController extends Controller
         } else {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la sauvegarde du formulaire.');
         }
+    }
+
+
+    public function getDetails($id)
+    {
+        $livreur = Livreur::find($id);
+
+        if (!$livreur) {
+            return response()->json(['error' => 'Livreur non trouvé'], 404);
+        }
+
+        return response()->json($livreur);
     }
 
 

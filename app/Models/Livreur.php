@@ -12,10 +12,11 @@ class Livreur extends Model
         'nom',
         'prenom',
         'numero',
-        'trajectoire',
+        'pointdepart',
+        'pointfinal',
         'typedetransport',
         'matricule',
-        
-        
+
+
     ];
 }

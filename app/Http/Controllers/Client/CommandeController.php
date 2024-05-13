@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 Use App\Models\Commande;
+use App\Models\Livreur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +13,8 @@ class CommandeController extends Controller
 {
     public function client_index(Request $request){
         $clients = Commande::all();
-        return view('admin.client.index', compact('clients'));
+        $livreurs = Livreur::all();
+        return view('admin.client.index', compact( 'clients', 'livreurs'));
 
     }
     public function profile_index(Request $request){

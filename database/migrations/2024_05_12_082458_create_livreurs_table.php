@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('numero');
-            $table->string('trajectoire');
+            $table->string('pointdepart');
+            $table->string('pointfinal');
             $table->string('typedetransport');
             $table->string('matricule');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

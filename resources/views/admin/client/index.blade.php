@@ -220,6 +220,15 @@
         <td>
         <a  data-bs-toggle="modal" data-bs-target="#editClient{{ $c->id}}"><span class="badge fs--1 bg-secondary">modifier</span></a>
          <a onclick="return confirm('voulez-vous vraiment supprimer?') " href="/admin/client/{{ $c->id}}/delete" ><span class="badge fs--1 bg-danger">supprimer</span></a>
+         <div class="mt-3">
+
+<select id="selectLivreur" class="form-select">
+    <option value="">Choisir un livreur...</option>
+    @foreach($livreurs as $c)
+        <option value="{{ $c->id }}">{{ $c->nom }} - {{ $c->pointdepart }} -> {{ $c->pointfinal }}</option>
+    @endforeach
+</select>
+</div>
         </td>
 
     </tr>
@@ -418,6 +427,34 @@
 
     </script>
 
+
+<script>
+        $(document).ready(function() {
+            $('#selectLivreur').change(function() {
+                var livreurId = $(this).val();
+                if (livreurId) {
+                    // Effectuer une requête AJAX pour obtenir les détails du livreur sélectionné
+                    $.ajax({
+                        url: '/get-livreur-details/' + livreurId,
+                        type: 'GET',
+                        success: function(response) {
+                            if (response) {
+                                // Mettre à jour les éléments HTML pour afficher les détails du livreur
+                                $('#nomLivreur').text(response.nom);
+                                $('#pointDepartLivreur').text(response.pointdepart);
+                                $('#pointFinalLivreur').text(response.pointfinal);
+                            }
+                        }
+                    });
+                } else {
+                    // Réinitialiser les éléments HTML si aucune sélection n'est faite
+                    $('#nomLivreur').text('');
+                    $('#pointDepartLivreur').text('');
+                    $('#pointFinalLivreur').text('');
+                }
+            });
+        });
+    </script>
     <script src=" {{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="  {{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>
   </body>

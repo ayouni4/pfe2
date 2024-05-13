@@ -187,7 +187,7 @@
               <hr/>
               <a  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary mt-3">Ajouter</a>
 <div class="mt-3">
-<div id="tableExample2" data-list='{"valueNames":["nom","prenom","trajectoire","typedetransport","numero","matricule","actions"],"page":5,"pagination":true}'>
+<div id="tableExample2" data-list='{"valueNames":["nom","prenom","pointdepart","pointfinal","typedetransport","numero","matricule","actions"],"page":5,"pagination":true}'>
   <div class="table-responsive scrollbar">
     <table class="table table-bordered table-striped fs--1 mb-0">
       <thead class="bg-200 text-900">
@@ -197,7 +197,8 @@
           <th class="sort" data-sort="prenom">prenom</th>
 
           <th class="sort" data-sort="numero">numero</th>
-          <th class="sort" data-sort="trajectoire">trajectoire</th>
+          <th class="sort" data-sort="pointdepart">pointdepart</th>
+          <th class="sort" data-sort="pointfinal">pointfinal</th>
           <th class="sort" data-sort="typedetransport">typedetransport</th>
           <th class="sort" data-sort="matricule">matricule</th>
           <th class="sort" data-sort="actions">actions</th>
@@ -210,7 +211,8 @@
       <td>{{ $c->nom }}</td>
        <td>{{ $c->prenom }}</td>
        <td>{{ $c->numero }}</td>
-      <td>{{ $c->trajectoire }}</td>
+       <td>{{ $c->pointdepart }}</td>
+      <td>{{ $c->pointfinal }}</td>
       <td>{{ $c->typedetransport }}</td>
     <td>{{ $c->matricule }}</td>
     <td>
@@ -284,7 +286,10 @@
     <input class="form-control form-control" type="text" name="numero" placeholder="numero" required>
    </div>
    <div class="mb-3">
-   <input class="form-control form-control" name="trajectoire" placeholder="trajectoire" required>
+   <input class="form-control form-control" name="pointdepart" placeholder="pointdepart" required>
+    </div>
+    <div class="mb-3">
+   <input class="form-control form-control" name="pointfinal" placeholder="pointfinal" required>
     </div>
 
      <select class="form-select" aria-label="Default select example" name="typedetransport" placeholder="typedetransport" required>
@@ -336,7 +341,10 @@
     <input class="form-control form-control" type="text" name="numero"  value="{{$c->numero}}"  placeholder="numero" required>
    </div>
    <div class="mb-3">
-   <input class="form-control form-control" name="trajectoire"  value="{{$c->trajectoire}}" placeholder="trajectoire" required>
+   <input class="form-control form-control" name="pointdepart"  value="{{$c->pointdepart}}" placeholder="pointdepart" required>
+    </div>
+    <div class="mb-3">
+   <input class="form-control form-control" name="pointfinal"  value="{{$c->pointfinal}}" placeholder="pointfinal" required>
     </div>
 
      <select class="form-select" aria-label="Default select example" name="typedetransport"  value="{{$c->typedetransport}}"  placeholder="typedetransport" required>

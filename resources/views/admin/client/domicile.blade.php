@@ -178,9 +178,23 @@
           <td>{{ $c->largeur }}</td>
           <td>{{ $c->hauteur }}</td>
 
+
         <td>
+
+
+
+
         <a  data-bs-toggle="modal" data-bs-target="#editDomicile{{ $c->id}}"><span class="badge fs--1 bg-secondary">modifier</span></a>
          <a onclick="return confirm('voulez-vous vraiment supprimer?') " href="/admin/domicile/{{ $c->id}}/delete" ><span class="badge fs--1 bg-danger">supprimer</span></a>
+         <div class="mt-3">
+
+        <select id="selectLivreur" class="form-select">
+            <option value="">Choisir un livreur...</option>
+            @foreach($livreurs as $c)
+                <option value="{{ $c->id }}">{{ $c->nom }} - {{ $c->pointdepart }} -> {{ $c->pointfinal }}</option>
+            @endforeach
+        </select>
+    </div>
         </td>
 
     </tr>
@@ -211,21 +225,19 @@
 
             </div>
           </div>
-          <footer class="footer">
-            <div class="row g-0 justify-content-between align-items-center h-100 mb-3">
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-900">Thank you for creating with phoenix<span class="d-none d-sm-inline-block"></span>
-                    <span class="mx-1">|</span><br class="d-sm-none">2022 &copy; <a href="https://themewagon.com">Themewagon</a>
-                </p>
-              </div>
-              <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">v1.1.0</p>
-              </div>
-            </div>
-          </footer>
+
         </div>
       </div>
     </main>
+    <div class="mt-3">
+  <label for="selectLivreur">Sélectionnez un livreur :</label>
+  <select id="selectLivreur" class="form-select">
+    <option value="">Choisir un livreur...</option>
+    @foreach($domiciles as $c)
+      <option value="{{ $c->id }}">{{ $c->nom }} - {{ $c->pointdepart }} -> {{ $c->pointfinal }}</option>
+    @endforeach
+  </select>
+</div>
 
 
     <!-- modal ajouter-->
@@ -265,11 +277,6 @@
   <div class="mb-3">
   <input class="form-control form-control"  name="hauteur" placeholder="hauteur-colis" required>
   </div>
-
-
-
-
-
 
 
 
@@ -342,6 +349,37 @@
   </div>
 </div>
 @endforeach
+
+
+
+
+<script>
+        $(document).ready(function() {
+            $('#selectLivreur').change(function() {
+                var livreurId = $(this).val();
+                if (livreurId) {
+                    // Effectuer une requête AJAX pour obtenir les détails du livreur sélectionné
+                    $.ajax({
+                        url: '/get-livreur-details/' + livreurId,
+                        type: 'GET',
+                        success: function(response) {
+                            if (response) {
+                                // Mettre à jour les éléments HTML pour afficher les détails du livreur
+                                $('#nomLivreur').text(response.nom);
+                                $('#pointDepartLivreur').text(response.pointdepart);
+                                $('#pointFinalLivreur').text(response.pointfinal);
+                            }
+                        }
+                    });
+                } else {
+                    // Réinitialiser les éléments HTML si aucune sélection n'est faite
+                    $('#nomLivreur').text('');
+                    $('#pointDepartLivreur').text('');
+                    $('#pointFinalLivreur').text('');
+                }
+            });
+        });
+    </script>
 
     <script src=" {{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="  {{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>

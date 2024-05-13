@@ -23,9 +23,9 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
 
-       // 'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        //'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
 
-       // 'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        //'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
         //'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
 
 

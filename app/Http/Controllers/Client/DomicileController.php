@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Domicile;
+use App\Models\Livreur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,9 +14,12 @@ class DomicileController extends Controller
     public function client_domicile(Request $request){
         $user = Auth::user();
         $domiciles = Domicile::all();
-        return view('admin.client.domicile', ['user' => $user], compact('domiciles'));
+        $livreurs = Livreur::all();
 
+        // Passer les variables $user, $domiciles et $livreurs à la vue
+        return view('admin.client.domicile', compact('user', 'domiciles', 'livreurs'));
     }
+
 
 
     public function profile_domicile (Request $request){

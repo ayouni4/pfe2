@@ -21,4 +21,6 @@ class Domicile extends Model
 
 
     ];
+
+
 }
