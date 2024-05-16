@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Livreur;
 
 use App\Http\Controllers\Controller;
+use App\Models\Domicile;
 Use App\Models\Livreur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,12 +11,13 @@ use Illuminate\Support\Facades\Hash;
 
 class FormulaireController extends Controller
 {
-
     public function livreur_index()
     {
-        $livreurs = Livreur::all();
+        $livreurs = Livreur::all(); // Récupérer tous les livreurs depuis la base de données
+
         return view('admin.livreur.index', compact('livreurs'));
     }
+
 
     public function   profile_index()
     {
@@ -138,6 +140,9 @@ class FormulaireController extends Controller
 
         return response()->json($livreur);
     }
+
+
+
 
 
 

@@ -21,8 +21,8 @@ use App\Http\Controllers\Commande\CommandeeController;
 use App\Http\Controllers\Commande\PoinrelaiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CurrencyController;
-use App\Http\Controllers\TaxController;
+use App\Http\Controllers\PermissionController;
+
 use App\Http\Controllers\OrdrelivraisonController;
 use App\Models\Domicile;
 use App\Models\Livreur;
@@ -34,10 +34,6 @@ Route::get('/api/pointrelais', function() {
 
     return response()->json($pointrelais);
 });
-
-
-
-Route::get('/get-livreur-details/{id}', [LivreurController::class, 'getDetails']);
 
 
 Route::get('/', function () {
@@ -184,6 +180,7 @@ Route::get('/admin/domicile',[DomicileController::class,'client_domicile']);
 Route::get('/admin/domicile/{id}/delete',[DomicileController::class,'destroy']);
 Route::post('/admin/domicile/{id}/update',[DomicileController::class,'update']);
 
+Route::post('/admin/domicile/{id}/affecter', [DomicileController::class,'affecterLivreur']);
 
 
 
@@ -199,34 +196,26 @@ Route::post('/admin/pointrelai/{id}/update',[PointrelaiformulaireController::cla
 
 
 //permission
-/*
+
 Route::get('permissions',[PermissionController::class,'index']);
 Route::get('permissions/create',[PermissionController::class,'create']);
 Route::get('permissions/edit',[PermissionController::class,'edit']);
 Route::post('permissions',[PermissionController::class,'store']);
-*/
 
-
-
- Route::group(['middleware' => ['role:super-admin|admin']], function() {
+    // Routes protégées par le middleware 'role' pour les rôles 'super-admin' ou 'admin'
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
-    Route::get('permissions/{permissionId}/delete', [App\Http\Controllers\PermissionController::class,'destroy']);
-    Route::put('/permissions/{id}/edit',[App\Http\Controllers\PermissionController::class,'update']);
+    Route::get('permissions/{permissionId}/delete', [App\Http\Controllers\PermissionController::class, 'destroy']);
 
     Route::resource('roles', App\Http\Controllers\RoleController::class);
-
-    Route::get('roles/{roleId}/delete', [App\Http\Controllers\RoleController::class,'destroy']);
-
-    Route::get('roles/{roleId}/give-permissions',[App\Http\Controllers\RoleController::class,'addPermissionRole']);
-
-    Route::put('roles/{roleId}/give-permissions',[App\Http\Controllers\RoleController::class,'givePermissionRole']);
+    Route::get('roles/{roleId}/delete', [App\Http\Controllers\RoleController::class, 'destroy']);
+    Route::get('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionToRole']);
+    Route::put('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionToRole']);
 
     Route::resource('users', App\Http\Controllers\UserController::class);
     Route::get('users/{userId}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
 
 
-});
 
 
 
@@ -236,3 +225,7 @@ Route::get('/colis',[ColiController::class,'showCreateForm'])->name('colis');
 
 Route::post('/colis/traitement',[ColiController::class,'store']);
 Route::get('/ordrelivraison', [OrdrelivraisonController::class, 'showColisData'])->name('ordrelivraison');
+
+
+
+

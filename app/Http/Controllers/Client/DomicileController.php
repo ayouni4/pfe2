@@ -14,11 +14,12 @@ class DomicileController extends Controller
     public function client_domicile(Request $request){
         $user = Auth::user();
         $domiciles = Domicile::all();
-        $livreurs = Livreur::all();
+        $livreurs = Livreur::all(); // Récupérer tous les livreurs depuis la base de données
 
         // Passer les variables $user, $domiciles et $livreurs à la vue
         return view('admin.client.domicile', compact('user', 'domiciles', 'livreurs'));
     }
+
 
 
 
@@ -96,6 +97,29 @@ class DomicileController extends Controller
 }
 
 
+
+public function affecterLivreur(Request $request, $id)
+{
+    $domicile = Domicile::find($id);
+
+    if (!$domicile) {
+        return response()->json(['error' => 'Domicile non trouvé'], 404);
+    }
+
+    $livreurId = $request->input('livreurId');
+
+    // Mettre à jour le domicile avec l'ID du livreur affecté
+    $domicile->livreur_id = $livreurId;
+    $domicile->save();
+
+    // Envoyer un message au profil du livreur (exemple avec session flash)
+    $livreur = Livreur::find($livreurId);
+    if ($livreur) {
+        session()->flash('success', 'Domicile affecté avec succès à ' . $livreur->nom);
+    }
+
+    return response()->json(['message' => 'Domicile affecté avec succès'], 200);
+}
 
 
 }

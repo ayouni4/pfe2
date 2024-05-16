@@ -134,24 +134,25 @@
                   <button class="btn btn-primary w-100 mb-3">valider</button>
 				  <p >{{session('status')}}</p>
                </form>
-<div class="mt-3">
+               @if(session('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
 
-
-</div>
+<!-- Autres contenus de la vue du profil du livreur -->
 
 
 
 
               </div>
 
-
-
-
-            </div>
           </div>
 
         </div>
       </div>
+
+
     </main>
 
 

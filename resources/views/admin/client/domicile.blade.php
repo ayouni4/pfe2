@@ -191,10 +191,15 @@
         <select id="selectLivreur" class="form-select">
             <option value="">Choisir un livreur...</option>
             @foreach($livreurs as $c)
-                <option value="{{ $c->id }}">{{ $c->nom }} - {{ $c->pointdepart }} -> {{ $c->pointfinal }}</option>
+                <option value="{{ $c->id }}">{{ $c->id }} - {{ $c->pointdepart }} -> {{ $c->pointfinal }}</option>
             @endforeach
         </select>
     </div>
+
+    <td>
+    <a href="#" class="btn btn-primary affecterLivraison" data-domicile-id="{{ $c->id }}">Affecter</a>
+</td>
+
         </td>
 
     </tr>
@@ -229,15 +234,7 @@
         </div>
       </div>
     </main>
-    <div class="mt-3">
-  <label for="selectLivreur">Sélectionnez un livreur :</label>
-  <select id="selectLivreur" class="form-select">
-    <option value="">Choisir un livreur...</option>
-    @foreach($domiciles as $c)
-      <option value="{{ $c->id }}">{{ $c->nom }} - {{ $c->pointdepart }} -> {{ $c->pointfinal }}</option>
-    @endforeach
-  </select>
-</div>
+
 
 
     <!-- modal ajouter-->
@@ -380,6 +377,11 @@
             });
         });
     </script>
+
+
+
+
+
 
     <script src=" {{asset('dashassets/js/phoenix.js')}}"></script>
     <script src="  {{asset('dashassets/js/ecommerce-dashboard.js')}}"></script>
